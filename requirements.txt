@@ -1,4 +1,7 @@
 Flask >= 3.1.0
 cohere >= 5.14.0
+google-genai >= 1.7.0
 requests >= 2.32.3
 python-dotenv >= 1.0.1
+fhirclient >= 4.3.1
+flask-cors >= 5.0.1
