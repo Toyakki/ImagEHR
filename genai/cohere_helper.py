@@ -7,11 +7,10 @@ def self_test():
 	response = client.chat(
 		model="command-a-03-2025",
 		messages=[
-			{"role": "user", "content": "Repeat after me: 'banana'"}
+			{"role": "user", "content": "What is 4 + 7? Answer with a word only."}
 		]
 	)
 
-	print(response)
-	print(response.message.content)
+	assert "eleven" in response.message.content[0].text.lower()
 
 self_test()
