@@ -33,7 +33,7 @@ body{
     height: 400px;
     bottom: 3%;
     mix-blend-mode: darken;
-    background-image: url("/resources/back3.jpg");
+    background-image: url("/static/resources/back3.jpg");
     background-size: cover;
     border-radius: 10px;
 }
