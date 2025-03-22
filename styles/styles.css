@@ -1,0 +1,141 @@
+#header{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 97%;
+    height: 50px;
+    top: 3%;
+    background-color: rgba(113, 113, 113, 0);
+    position: fixed;
+    border-radius: 10px;
+    z-index: 1000;
+}
+body{
+    background-color: white;
+}
+#footer{
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96%;
+    height: 300px;
+    bottom: 3%;
+    background-color: rgb(9, 3, 3);
+    border-radius: 10px;
+}
+.infosection{
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96%;
+    height: 400px;
+    bottom: 3%;
+    mix-blend-mode: darken;
+    background-image: url("/resources/back3.jpg");
+    background-size: cover;
+    border-radius: 10px;
+}
+.infosection2{
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96%;
+    height: 400px;
+    bottom: 3%;
+    mix-blend-mode: darken;
+    background-color: beige;
+    background-size: cover;
+    border-radius: 10px;
+}
+.nav{
+    margin: 0;
+    font-size: 20px;
+    padding-right: 2%;
+    align-items: center;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: 300;
+    color: #000000;
+}
+#innerbox{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 80%;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+}
+.boxleft{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(128, 128, 128, 0);
+
+}
+.boxright{
+    width: 50%;
+    height: 100%;
+    background-color: rgba(129, 53, 53, 0);
+}
+.maintextholder{
+    height: fit-content;
+    position: absolute;
+    top: 55%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+}
+.openingtext {
+    margin: 0;
+    font-size: 90px;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: bold;
+    color: #000000;
+}
+.openingdes {
+    margin: 0;
+    font-size: 30px;
+    padding-bottom: 2%;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: 300;
+    color: #000000;
+}
+
+.buttontogo{
+    display: grid;
+    width: 150px;
+    height: 50px;
+    border-radius: 16px;
+    align-items: center;
+    text-align: center;
+    margin: 0;
+    background-color: black;
+    border-width: 10px;
+    font-size: 20px;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.bottomt{
+    margin: 0;
+    font-size: 15px;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: 100;
+    color: #ffffff;
+}
+.descriptionholder{
+    height: fit-content;
+    position: absolute;
+    left: 55%;
+    transform: translate(0%, 53%);
+}
+.desctext{
+    margin: 0;
+    width: 69%;
+    font-size: 20px;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: 400;
+    color: #000000;
+}
