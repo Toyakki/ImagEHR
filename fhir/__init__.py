@@ -1,27 +1,30 @@
 from fhirclient.client import FHIRClient
 from fhirclient.models.patient import Patient
-from fhirclient.models.adverseevent import AdverseEvent
+from requests import get
 
-def get_client(api_base: str) -> FHIRClient:
+def get_all_patient_ids(api_base: str) -> list[str]:
 	"""
-	>>> get_client("https://r4.smarthealthit.org")
+	>>> get_all_patient_ids("https://r4.smarthealthit.org")
 	"""
 	settings = {
 		"app_id": "imagehr_bg_worker",
 		"api_base": api_base
 	}
-	return FHIRClient(settings=settings)
-
-def get_all_patient_ids(cli: FHIRClient) -> set[str]:
+	client = FHIRClient(settings=settings)
 	search = Patient.where(struct={})
-	patients = search.perform_resources(cli.server)
+	patients = search.perform_resources(client.server)
 	patient_ids = [patient.id for patient in patients]
-	return set(patient_ids)
+	return patient_ids
 
-def get_all_patient_info_as_json(cli: FHIRClient, patient_id: str) -> str:
-	info: str = ""
-
-	# AdverseEvent
-	search = AdverseEvent.where(struct={"subject": f"Patient/{patient_id}"})
-	for event in search.perform_resources(cli.server):
-		info += event.as_json()
+def get_all_patient_info(api_base: str, patient_id: str) -> str:
+	"""
+	>>> get_all_patient_info("https://r4.smarthealthit.org", "bc6c8e2a-63de-4790-94af-fcab57874c21")
+	"""
+	try:
+		res = get(f"{api_base}/Patient/{patient_id}/$everything?_format=json&_pretty=true")
+		if res.status_code != 200:
+			raise Exception(f"not ok status code: {res.status_code}")
+		return res.text
+	except Exception as e:
+		print(f"[ERROR] an error occured in get_all_patient_info:", e)
+		return ""
