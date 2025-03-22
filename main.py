@@ -39,5 +39,11 @@ def dashboard():
 		return redirect("/set-fhir")
 	return render_template("dashboard.html", fhir=fhir_api_base)
 
+@app.route("/patients")
+def patients():
+	if not fhir_api_base:
+		return redirect("/set-fhir")
+	return render_template("patients.html", fhir=fhir_api_base)
+
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
