@@ -27,7 +27,7 @@ def simple_chat(message: str, model: str = "command-a-03-2025") -> str:
 		if not response.message.content[0].text: raise Exception("cohere response text is empty")
 		return response.message.content[0].text
 	except Exception as e:
-		print(f"[ERROR] an error occured in genai.cohere_helper.simple_chat: {e}")
+		print(f"[ERROR] an error occured in genai.cohere_helper.simple_chat:", e)
 		return ""
 
 def _self_test():
