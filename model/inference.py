@@ -1,37 +1,22 @@
-from utils import process_detections
-import json
+from os.path import dirname, abspath, join
+from os import chdir
+from sys import executable
+from json import dumps
+from subprocess import run
+from model.utils import process_detections
 
-import shutil, os
-import subprocess
-import matplotlib.pyplot as plt
-from tqdm import tqdm  # If not in a notebook, consider using tqdm.tqdm
-from PIL import Image  # For reading image dimensions
+yolov5_dir = join(dirname(abspath(__file__)), "pretrained/yolov5")
+labels_dir = join(dirname(abspath(__file__)), "pretrained/yolov5/runs/detect/exp/labels")
+images_dir = join(dirname(abspath(__file__)), "pretrained/images")
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-yolov5_dir = os.path.join(BASE_DIR, 'pretrained/yolov5')
-DEBUG = True
-# Adjust this path if necessary, e.g., using os.path.join(yolov5_dir, 'runs/train/exp/weights/best.pt')
-weights_dir = os.path.join(yolov5_dir, 'runs/train/exp/weights/best.pt')
-images_dir = os.path.join(BASE_DIR, 'data')
-labels_dir = os.path.join(yolov5_dir, 'runs/detect/exp/labels')
-record_dir = os.path.join(BASE_DIR, '..', 'formats')
-    
-def inference(images_dir, weights_dir):
-    # Change working directory to where detect.py is located
-    os.chdir(yolov5_dir)
-    
-    # Construct and execute the detection command
-    cmd = (
-        f"python detect.py --weights \"{weights_dir}\" "
-        f"--img 640 --conf 0.01 --iou 0.4 "
-        f"--source \"{images_dir}\" --save-txt --save-conf --exist-ok"
-    )
-    subprocess.run(cmd, shell=True, check=True)
-    records = process_detections(labels_dir, images_dir)
-    
-    with open(os.path.join(record_dir, 'detection_results.json'), 'w') as f:
-        json.dump(records, f)
+def inference() -> str:
+	chdir(yolov5_dir)
+	cmd = (
+		f"\"{executable}\" detect.py --weights ../runs/best.pt "
+		f"--img 640 --conf 0.01 --iou 0.4 "
+		f"--source ../images --save-txt --save-conf --exist-ok"
+	)
+	run(cmd, shell=True, check=True)
 
-if __name__ == '__main__':
-    inference(images_dir, weights_dir)
-    print('Inference complete. Detection results saved to detection_results.json')
+	records = process_detections(labels_dir, images_dir)
+	return dumps(records)
