@@ -1,11 +1,9 @@
 # Containing the helper functions to convert YOLO output into prompt
+from PIL import Image
+from typing import Dict, Optional
 import os
 import glob
 import numpy as np
-import json
-
-from PIL import Image
-from typing import Dict, Optional
 
 CLASS_MAPPING = {
     0: {"MITESTCD": "AORTIC_ENLARGEMENT", "MITEST": "Aortic enlargement"},
@@ -94,6 +92,8 @@ def process_detections(labels_dir, images_dir):
         image_file = os.path.join(images_dir, image_id + '.png')
         if not os.path.exists(image_file):
             image_file = os.path.join(images_dir, image_id + '.jpg')
+        if not os.path.exists(image_file):
+            image_file = os.path.join(images_dir, image_id + '.webp')
         
         with Image.open(image_file) as img:
             width, height = img.size
