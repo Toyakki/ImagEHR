@@ -21,7 +21,7 @@ def set_fhir():
 	global fhir_api_base
 	if request.method == "GET":
 		return render_template("set-fhir.html")
-	if "fhir" not in request.form:
+	if "fhir" not in request.form or not request.form["fhir"]:
 		return "<h1>Please enter a value for FHIR API endpoint.</h1>", 400
 	fhir_ = request.form["fhir"]
 	try:
