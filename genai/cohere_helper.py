@@ -1,5 +1,5 @@
 from cohere import ClientV2
-from config.env import get_env
+# from config.env import get_env
 
 _client = ClientV2(get_env("COHERE_API_KEY"))
 
