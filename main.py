@@ -64,12 +64,13 @@ def patient(patient_id: str):
 		info = get_all_patient_info(fhir_api_base, patient_id)
 		if not info:
 			raise Exception
-		return render_template("patient.html",
+		return stream_template("patient.html",
 			patient_id=patient_id,
 			patient=get_patient(fhir_api_base, patient_id),
 			info=info,
 			dumps=dumps,
-			b64encode=b64encode
+			b64encode=b64encode,
+			simple_chat=simple_chat
 		)
 	except:
 		return render_template("error.html", message="Failed to fetch patient info!")
