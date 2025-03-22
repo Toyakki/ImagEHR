@@ -7,5 +7,25 @@
 <body>
 	<h1>All Patients</h1>
 	<p>Fetched from {{ fhir }}</p>
+	<hr>
+	{% for id in ids %}
+	<div id="patient-{{ id }}"></div>
+	<script>
+		"use strict";
+
+		try {
+			const b64 = "{{ b64encode(dumps(gp(api_base, id).as_json()).encode()).decode() }}";
+			const data = JSON.parse(atob(b64));
+			document.getElementById("patient-{{ id }}").innerHTML = `
+				<h3>${data.name[0].given[0]} ${data.name[0].family}</h3><br>
+				<p>Profile ID: ${data.id}</p><br>
+				<p></p>
+				<hr>
+			`;
+		} catch (e) {
+			console.warn(e);
+		}
+	</script>
+	{% endfor %}
 </body>
 </html>

@@ -3,6 +3,8 @@ from flask_cors import CORS
 from fhir import get_all_patient_ids, get_patient
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from model.inference import inference # DO NOT REMOVE OR COMMENT OUT
+from json import loads, dumps
+from base64 import b64encode
 
 app = Flask(__name__)
 CORS(app)
@@ -52,7 +54,10 @@ def patients():
 		fhir=fhir_api_base,
 		ids=ids,
 		gp=get_patient,
-		api_base=fhir_api_base
+		api_base=fhir_api_base,
+		loads=loads,
+		dumps=dumps,
+		b64encode=b64encode
 	)
 
 if __name__ == "__main__":
