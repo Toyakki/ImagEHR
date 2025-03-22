@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from config.env import get_env
+from genai.cohere_helper import client
 
 app = Flask(__name__)
 CORS(app)
