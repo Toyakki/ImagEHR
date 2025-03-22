@@ -6,7 +6,7 @@ from subprocess import run
 from model.utils import process_detections
 
 if not exists(join(dirname(abspath(__file__)), "pretrained/runs/best.pt")):
-	raise Exception("Missing file /model/pretrained/runs/best.pt")
+	raise Exception("Missing file /model/pretrained/runs/best.pt") # Download it from here: https://app.filen.io/#/d/3bd752fa-995c-41b0-a244-74a5536b5f9a%23biVpoT6uaPjZCldRh3CxGckkEWygGb30
 
 yolov5_dir = join(dirname(abspath(__file__)), "pretrained/yolov5")
 labels_dir = join(dirname(abspath(__file__)), "pretrained/yolov5/runs/detect/exp/labels")
