@@ -1,7 +1,7 @@
 from cohere import ClientV2
 from config.env import get_env
 
-client = ClientV2(get_env("COHERE_API_KEY"))
+_client = ClientV2(get_env("COHERE_API_KEY"))
 
 def simple_chat(message: str) -> str:
 	"""
@@ -29,8 +29,8 @@ def simple_chat(message: str) -> str:
 		return ""
 
 
-def self_test():
+def _self_test():
 	response = simple_chat("What is 7 + 4? Answer in one word only.")
 	assert "eleven" in response.lower()
 
-self_test()
+_self_test()
