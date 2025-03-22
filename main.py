@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
-from genai.cohere_helper import client
+from genai.cohere_helper import simple_chat
 
 app = Flask(__name__)
 CORS(app)
