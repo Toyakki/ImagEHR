@@ -21,8 +21,19 @@
 		})();
 	</script>
 	<hr>
-	<code>
-		{{ info }}
-	</code>
+	<div>
+		<h3>Patient Summary</h3>
+		<p id="patient_summary">Generating in real-time...</p>
+	</div>
+	<hr>
+	<p>Placeholder for upload boxes</p>
+
+	<!-- Take advantage of Flask's stream_template -->
+	<script>
+		"use strict";
+
+		const summary = `{{ simple_chat("Please give a one paragraph summary of this patient based off of their EHR record: \n\n" + info) }}`;
+		document.getElementById("patient_summary").innerHTML = summary;
+	</script>
 </body>
 </html>

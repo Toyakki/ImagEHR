@@ -72,7 +72,8 @@ def patient(patient_id: str):
 			b64encode=b64encode,
 			simple_chat=simple_chat
 		)
-	except:
+	except Exception as e:
+		print(e.with_traceback())
 		return render_template("error.html", message="Failed to fetch patient info!")
 
 if __name__ == "__main__":
