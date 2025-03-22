@@ -33,7 +33,7 @@
 		"use strict";
 
 		const summary = `{{ simple_chat("Please give a one paragraph summary of this patient based off of their EHR record: \n\n" + info) }}`;
-		document.getElementById("patient_summary").innerHTML = summary;
+		document.getElementById("patient_summary").innerHTML = summary ? summary : "Failed to generate";
 	</script>
 </body>
 </html>
