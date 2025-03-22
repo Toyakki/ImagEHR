@@ -3,10 +3,10 @@ from os import environ
 from os.path import exists
 
 if not exists(".env"):
-	raise Exception(".env not found! Please create one using .env.example as a reference")
+	raise Exception(".env file not found! Please create one using .env.example as a reference!")
 
-if not load_dotenv():
-	raise Exception("failed to parse .env: did you create and fill it out?")
+if not load_dotenv(dotenv_path=".env"):
+	raise Exception("failed to parse .env file! Please fill it out using .env.example as a reference!")
 
 def get_env(var: str) -> str:
 	if var in environ:
