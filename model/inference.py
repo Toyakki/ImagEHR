@@ -1,9 +1,12 @@
-from os.path import dirname, abspath, join
+from os.path import dirname, abspath, join, exists
 from os import chdir
 from sys import executable
 from json import dumps
 from subprocess import run
 from model.utils import process_detections
+
+if not exists(join(dirname(abspath(__file__)), "pretrained/runs/best.pt")):
+	raise Exception("Missing file /model/pretrained/runs/best.pt")
 
 yolov5_dir = join(dirname(abspath(__file__)), "pretrained/yolov5")
 labels_dir = join(dirname(abspath(__file__)), "pretrained/yolov5/runs/detect/exp/labels")
