@@ -1,6 +1,6 @@
 from flask import Flask, render_template, stream_template, request, redirect
 from flask_cors import CORS
-from fhir import get_all_patient_ids, get_patient
+from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from model.inference import inference # DO NOT REMOVE OR COMMENT OUT
 from json import loads, dumps
@@ -59,6 +59,24 @@ def patients():
 		dumps=dumps,
 		b64encode=b64encode
 	)
+
+@app.route("/patient/<patient_id>")
+def patient(patient_id: str):
+	if not fhir_api_base:
+		return redirect("/set-fhir")
+	try:
+		info = get_all_patient_info(fhir_api_base, patient_id)
+		if not info:
+			raise Exception
+		return render_template("patient.html",
+			patient_id=patient_id,
+			patient=get_patient(fhir_api_base, patient_id),
+			info=info,
+			dumps=dumps,
+			b64encode=b64encode
+		)
+	except:
+		return render_template("error.html", message="Failed to fetch patient info!")
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
