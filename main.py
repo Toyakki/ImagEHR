@@ -22,14 +22,14 @@ def set_fhir():
 	if request.method == "GET":
 		return render_template("set-fhir.html")
 	if "fhir" not in request.form or not request.form["fhir"]:
-		return "<h1>Please enter a value for FHIR API endpoint.</h1>", 400
+		return render_template("error.html", message="Please enter a value for FHIR API endpoint."), 400
 	fhir_ = request.form["fhir"]
 	try:
 		patient_ids = get_all_patient_ids(fhir_)
 		if not patient_ids:
 			raise Exception
 	except:
-		return "<h1>Failed to get patient IDs from FHIR. Invalid URL?</h1>", 400
+		return render_template("error.html", message="Failed to get patient IDs from FHIR. Invalid URL?"), 400
 	fhir_api_base = fhir_
 	return redirect("/dashboard")
 
