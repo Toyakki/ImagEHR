@@ -1,5 +1,9 @@
 from dotenv import load_dotenv
 from os import environ
+from os.path import exists
+
+if not exists(".env"):
+	raise Exception(".env not found! Please create one using .env.example as a reference")
 
 if not load_dotenv():
 	raise Exception("failed to parse .env: did you create and fill it out?")
