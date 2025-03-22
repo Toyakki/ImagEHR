@@ -9,6 +9,11 @@ https://pytorch.org/get-started/locally/
 pip install -r requirements.txt
 ```
 
+# Pull submodules
+```
+git submodule update --init --remote --recursive
+```
+
 # Environment
 Copy `.env.example` into `.env` and fill in your API keys, etc.
 
