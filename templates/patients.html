@@ -3,13 +3,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>View Patients</title>
+	<style>
+		.patient{
+			border: 1px solid #ccc;
+			border-radius: 12px;
+			padding: 16px;
+			box-sizing: border-box;
+			cursor: pointer;
+			padding-bottom: 8px;
+		}
+	</style>
 </head>
 <body>
 	<h1>All Patients</h1>
 	<p>Fetched from {{ fhir }}</p>
 	<hr>
 	{% for id in ids %}
-	<div id="patient-{{ id }}"></div>
+	<div id="patient-{{ id }}" class="patient" onclick="window.location.href = '/patient/{{ id }}';"></div>
 	<script>
 		"use strict";
 
@@ -17,10 +27,10 @@
 			const b64 = "{{ b64encode(dumps(gp(api_base, id).as_json()).encode()).decode() }}";
 			const data = JSON.parse(atob(b64));
 			document.getElementById("patient-{{ id }}").innerHTML = `
-				<h3>${data.name[0].given[0]} ${data.name[0].family}</h3><br>
-				<p>Profile ID: ${data.id}</p><br>
-				<p></p>
-				<hr>
+				<h3>${data.name[0].given[0]} ${data.name[0].family}</h3>
+				<p>Profile ID: ${data.id}</p>
+				<p>${data.telecom ? "Phone: " + data.telecom[0].value : ""}</p>
+				<p>${data.birthDate ? "Birthdate: " + data.birthDate : ""}</p>
 			`;
 		} catch (e) {
 			console.warn(e);
