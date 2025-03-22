@@ -1,6 +1,9 @@
 # ImagEHR
 GenAI Genesis 2025
 
+# Install PyTorch
+https://pytorch.org/get-started/locally/
+
 # Setup
 ```
 pip install -r requirements.txt
