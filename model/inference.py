@@ -1,8 +1,6 @@
-from utils import yolo2voc, process_detections
-
-
+from utils import process_detections
 import json
-from glob import glob
+
 import shutil, os
 import subprocess
 import matplotlib.pyplot as plt
@@ -16,6 +14,7 @@ DEBUG = True
 weights_dir = os.path.join(yolov5_dir, 'runs/train/exp/weights/best.pt')
 images_dir = os.path.join(BASE_DIR, 'data')
 labels_dir = os.path.join(yolov5_dir, 'runs/detect/exp/labels')
+record_dir = os.path.join(BASE_DIR, '..', 'formats')
     
 def inference(images_dir, weights_dir):
     # Change working directory to where detect.py is located
@@ -29,7 +28,8 @@ def inference(images_dir, weights_dir):
     )
     subprocess.run(cmd, shell=True, check=True)
     records = process_detections(labels_dir, images_dir)
-    with open('detection_results.json', 'w') as f:
+    
+    with open(os.path.join(record_dir, 'detection_results.json'), 'w') as f:
         json.dump(records, f)
 
 if __name__ == '__main__':
