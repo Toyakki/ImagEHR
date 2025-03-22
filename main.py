@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, stream_template, request, redirect
 from flask_cors import CORS
-from fhir import get_all_patient_ids
+from fhir import get_all_patient_ids, get_patient
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from model.inference import inference # DO NOT REMOVE OR COMMENT OUT
 
@@ -32,6 +32,28 @@ def set_fhir():
 		return render_template("error.html", message="Failed to get patient IDs from FHIR. Invalid URL?"), 400
 	fhir_api_base = fhir_
 	return redirect("/dashboard")
+
+@app.route("/dashboard")
+def dashboard():
+	if not fhir_api_base:
+		return redirect("/set-fhir")
+	return stream_template("dashboard.html", fhir=fhir_api_base)
+
+@app.route("/patients")
+def patients():
+	if not fhir_api_base:
+		return redirect("/set-fhir")
+	try:
+		ids = get_all_patient_ids(fhir_api_base)
+	except:
+		return render_template("error.html", message="Failed to fetch patient IDs through FHIR!")
+
+	return stream_template("patients.html",
+		fhir=fhir_api_base,
+		ids=ids,
+		gp=get_patient,
+		api_base=fhir_api_base
+	)
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
