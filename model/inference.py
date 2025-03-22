@@ -10,6 +10,13 @@ labels_dir = join(dirname(abspath(__file__)), "pretrained/yolov5/runs/detect/exp
 images_dir = join(dirname(abspath(__file__)), "pretrained/images")
 
 def inference() -> str:
+	"""
+	Create folder /model/pretrained/images if not exists.
+	Delete any existing images in /model/pretrained/images if present.
+	Put your images (.png, .jpg, .webp) in /model/pretrained/images.
+	Then run inference(). Exceptions may be raised, so catch them.
+	If successful, you will get a JSON string returned containing results.
+	"""
 	chdir(yolov5_dir)
 	cmd = (
 		f"\"{executable}\" detect.py --weights ../runs/best.pt "
