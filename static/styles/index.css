@@ -89,11 +89,7 @@ body{
     cursor: pointer;
 }
 .nav2{
-    margin: 0;
     font-size: 20px;
-    position: absolute;
-    left: 3%;
-    align-items: center;
     font-family: "Hubot Sans", sans-serif;
     font-weight: 800;
     color: #000000;
@@ -203,18 +199,20 @@ body{
 #leftupload{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 40%;
+    width: 43%;
     height: 90vh;
-    background-color: rgb(38, 241, 133);
+    background-color: rgba(38, 241, 133, 0);
+    justify-content: center;
+    align-items: flex-end;
 }
 #rightupload{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 60%;
+    align-items: flex-start;
+    width: 57%;
     height: 90vh;
-    background-color: rgb(177, 21, 21);
+    background-color: rgba(177, 21, 21, 0);
+    justify-content: center;
 }
 .biguploadtext {
     margin: 0;
@@ -222,4 +220,37 @@ body{
     font-family: "Hubot Sans", sans-serif;
     font-weight: 700;
     color: #000000;
+}
+.boxupload  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    height: 30vw;
+    background-color: rgb(14, 14, 14);
+    border-radius: 10px;
+    box-shadow: 0px 0px 364px 33px #00000054;
+    backdrop-filter: blur(10px);
+}
+.maintextholder2{
+    height: fit-content;
+    position: absolute;
+    margin-right: 24px;
+}
+#statestation{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin: 0;
+    position: fixed;
+    left: 3%;
+    align-items: center;
+}
+.uploadtext{
+    margin: 0;
+    font-size: 40px;
+    font-family: "Hubot Sans", sans-serif;
+    font-weight: 500;
+    color: #ffffff;
 }
