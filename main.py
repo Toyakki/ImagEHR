@@ -14,10 +14,6 @@ fhir_api_base: str = ""
 def index():
 	return render_template("index.html")
 
-@app.route("/getstarted")
-def upload():
-	return render_template("upload.html")
-
 @app.route("/set-fhir", methods=["GET", "POST"])
 def set_fhir():
 	global fhir_api_base
