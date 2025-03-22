@@ -22,9 +22,9 @@ def inference(images_dir, weights_dir):
     
     # Construct and execute the detection command
     cmd = (
-        f"python detect.py --weights {weights_dir} "
+        f"python detect.py --weights \"{weights_dir}\" "
         f"--img 640 --conf 0.01 --iou 0.4 "
-        f"--source {images_dir} --save-txt --save-conf --exist-ok"
+        f"--source \"{images_dir}\" --save-txt --save-conf --exist-ok"
     )
     subprocess.run(cmd, shell=True, check=True)
     records = process_detections(labels_dir, images_dir)
