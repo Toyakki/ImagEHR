@@ -5,22 +5,24 @@ import os
 import glob
 import numpy as np
 
+INPUT_VARIABLE = "MI"
+
 CLASS_MAPPING = {
-    0: {"MITESTCD": "AORTIC_ENLARGEMENT", "MITEST": "Aortic enlargement"},
+    0: {"QNAM": "AORTENLG", "QLABEL": "Aortic enlargement"},
     1: {"MITESTCD": "ATELECTASIS", "MITEST": "Atelectasis"},
-    2: {"MITESTCD": "CALCIFICATION", "MITEST": "Calcification"},
+    2: {"QNAM": "CALCIFIC", "QLABEL": "Calcification"},
     3: {"MITESTCD": "CARDIOMEGALY", "MITEST": "Cardiomegaly"},
     4: {"MITESTCD": "CONSOLIDATION", "MITEST": "Consolidation"},
-    5: {"MITESTCD": "ILD", "MITEST": "ILD"},
-    6: {"MITESTCD": "INFILTRATION", "MITEST": "Infiltration"},
-    7: {"MITESTCD": "LUNG_OPACITY", "MITEST": "Lung opacity"},
+    5: {"QNAM": "ILD", "QLABEL": "Interstitial lung disease"},
+    6: {"QNAM": "INFILTRA", "QLABEL": "Infiltration"},
+    7: {"QNAM": "LUNGOPAC", "QLABEL": "Lung opacity"},
     8: {"MITESTCD": "NODULE", "MITEST": "Nodule/Mass"},
-    9: {"MITESTCD": "OTHER_LESION", "MITEST": "Other lesion"},
-    10: {"MITESTCD": "PLEURAL_EFFUSION", "MITEST": "Pleural effusion"},
-    11: {"MITESTCD": "PLEURAL_THICKENING", "MITEST": "Pleural thickening"},
-    12: {"MITESTCD": "PNEUMOTHORAX", "MITEST": "Pneumothorax"},
-    13: {"MITESTCD": "PULMONARY_FIBROSIS", "MITEST": "Pulmonary fibrosis"},
-    14: {"MITESTCD": "NO_FINDING", "MITEST": "No finding"}
+    9: {"QNAM": "OTHLESN", "QLABEL": "Other lesion"},
+    10: {"RSTESTCD": "PLEUREFF", "RSTEST": "Pleural effusion", "RSCAT": "CHEST X-RAY"},
+    11: {"RSTESTCD": "PLEURTHK", "RSTEST": "Pleural thickening", "RSCAT": "CHEST X-RAY"},
+    12: {"RSTESTCD": "PNMTHRX", "RSTEST": "Pneumothorax", "RSCAT": "CHEST X-RAY"},
+    13: {"QNAM": "PULMFIB", "QLABEL": "Pulmonary fibrosis"},
+    14: {"RSTESTCD": "NOFIND", "RSTEST": "No finding", "RSCAT": "CHEST X-RAY"},
 }
 
 CUT_OFF = 0.6    # Confidence cutoff for considering a detection
@@ -54,29 +56,55 @@ def compute_miloc(xmin, ymin, xmax, ymax, image_width, image_height) -> str:
         vertical = "middle"
     return f"{vertical} {side} lobe"
 
-def convert_to_dict(detection_result, width, height) -> Optional[Dict[str, str]]:
+def convert_to_dict(detection_result, width: int, height: int) -> Optional[Dict[str, str]]:
     """
-    Convert the detection output into a structured dictionary.    
+    Convert detection output into a structured CDISC-compliant dictionary.
+    Supports MI, RS, and SUPPQUAL mappings.
     """
     class_id, conf, x_center, y_center, w_norm, h_norm = detection_result
+
+    if conf <= CUT_OFF:
+        return None  # Below confidence threshold
+
+    # Convert YOLO to VOC format
     voc_bbox = yolo2voc(height, width, np.array([[x_center, y_center, w_norm, h_norm]]))[0]
     xmin, ymin, xmax, ymax = voc_bbox
-    
-    widght_px = xmax - xmin
-    miorres = f"{widght_px:.1f} px"
-    if conf > CUT_OFF:
-        miloc = compute_miloc(xmin, ymin, xmax, ymax, width, height)
-        mapping = CLASS_MAPPING.get(int(class_id), {"MITESTCD": "UNKNOWN", "MITEST": "Unknown"})
+    measure = (xmax - xmin) * 2.54  # Assuming width is in pixels, converted to cm
+    miorres = f"{measure:.1f} px"
+    miloc = compute_miloc(xmin, ymin, xmax, ymax, width, height)
+
+    # Get mapping and determine type
+    mapping = CLASS_MAPPING.get(int(class_id))
+    if not mapping:
+        return None  # Unknown class_id
+
+    structured = {}
+
+    # Determine mapping type
+    if "MITESTCD" in mapping:
         structured = {
             "MITESTCD": mapping["MITESTCD"],
-            "MITEST": mapping["MITEST"],
             "MIORRES": miorres,
             "MILOC": miloc,
-            "MIMETHOD": "X-ray",
+            "MIMETHOD": "x-ray",
             "MIEVAL": "Radiologist"
         }
+    elif "RSTESTCD" in mapping:
+        structured = {
+            "RSTESTCD": mapping["RSTESTCD"],
+            "RSORRES": "Positive",
+            "RSCAT": "CHEST X-RAY",
+        }
+    elif "QNAM" in mapping:
+        structured = {
+            "QNAM": mapping["QNAM"],
+            "QLABEL": mapping["QLABEL"],
+            "QVAL": "Positive",
+            "RDOMAIN": "RS",
+        }
     else:
-        structured = None
+        return None
+
     return structured
 
 def process_detections(labels_dir, images_dir):
@@ -111,6 +139,5 @@ def process_detections(labels_dir, images_dir):
                 record = convert_to_dict(detection, width, height)
         
         if record:
-            record["IMAGEID"] = image_id
             structured_records.append(record)
     return structured_records
