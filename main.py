@@ -1,8 +1,10 @@
 from flask import Flask, render_template, stream_template, request, redirect
 from flask_cors import CORS
-from fhir import get_all_patient_ids, get_patient
+from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from model.inference import inference # DO NOT REMOVE OR COMMENT OUT
+from json import loads, dumps
+from base64 import b64encode
 
 app = Flask(__name__)
 CORS(app)
@@ -11,10 +13,6 @@ fhir_api_base: str = ""
 @app.route("/")
 def index():
 	return render_template("index.html")
-
-@app.route("/getstarted")
-def upload():
-	return render_template("upload.html")
 
 @app.route("/set-fhir", methods=["GET", "POST"])
 def set_fhir():
@@ -52,8 +50,29 @@ def patients():
 		fhir=fhir_api_base,
 		ids=ids,
 		gp=get_patient,
-		api_base=fhir_api_base
+		api_base=fhir_api_base,
+		loads=loads,
+		dumps=dumps,
+		b64encode=b64encode
 	)
+
+@app.route("/patient/<patient_id>")
+def patient(patient_id: str):
+	if not fhir_api_base:
+		return redirect("/set-fhir")
+	try:
+		info = get_all_patient_info(fhir_api_base, patient_id)
+		if not info:
+			raise Exception
+		return render_template("patient.html",
+			patient_id=patient_id,
+			patient=get_patient(fhir_api_base, patient_id),
+			info=info,
+			dumps=dumps,
+			b64encode=b64encode
+		)
+	except:
+		return render_template("error.html", message="Failed to fetch patient info!")
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION

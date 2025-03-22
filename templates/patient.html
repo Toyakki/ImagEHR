@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>View Patient {{ patient_id }}</title>
+</head>
+<body>
+	<div id="patient_profile"></div>
+	<script>
+		"use strict";
+
+		(() => {
+			const b64 = "{{ b64encode(dumps(patient.as_json()).encode()).decode() }}";
+			const data = JSON.parse(atob(b64));
+			document.getElementById("patient_profile").innerHTML = `
+				<h3>${data.name[0].given[0]} ${data.name[0].family}</h3>
+				<p>Profile ID: ${data.id}</p>
+				<p>${data.telecom ? "Phone: " + data.telecom[0].value : ""}</p>
+				<p>${data.birthDate ? "Birthdate: " + data.birthDate : ""}</p>
+			`;
+		})();
+	</script>
+	<hr>
+	<code>
+		{{ info }}
+	</code>
+</body>
+</html>
