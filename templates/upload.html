@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <style>
@@ -7,20 +8,24 @@
     <title>Home</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/static/styles/index.css">
-</html>
 <body>
 <div class="header">
     <h1 class="nav">FAQ</h1>
     <h1 class="nav">OpenSource</h1>
     <h1 class="nav">Team</h1>
+    <h1 class="nav" style="left: 6%;position: absolute;
+                ">UPLOAD STATION</h1>
     <a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>
 </div>
 <script src="/static/java/main.js"></script>
-<div class="dropbos">
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" id="file" class="inputfile" accept=".csv, .xlsx">
-        <label for="file">Choose a file</label>
-        <input type="submit" value="Upload" class="submit">
-    </form>
+<div id="innerbox" style="margin-top: 3%">
+    <div id="leftupload">
+        <div class="maintextholder">
+            <h1 class="biguploadtext">Upload your data</h1>
+            <h1 class="biguploadtext">to</h1>
+            <h1 class="biguploadtext">prepare our multimodal for research</h1>
+        </div>
+    </div>
+    <div id="rightupload"></div>
 </div>
 </body>
