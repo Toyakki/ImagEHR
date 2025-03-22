@@ -7,4 +7,4 @@ pip install -r requirements.txt
 ```
 
 # Environment
-Fill in the `.env.example` file and rename it to `.env` when done.
+Copy `.env.example` into `.env` and fill in your API keys, etc.
