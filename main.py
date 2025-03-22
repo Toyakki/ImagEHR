@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 from genai.cohere_helper import simple_chat
 
@@ -7,7 +7,7 @@ CORS(app)
 
 @app.route("/")
 def index():
-	return "<h1>Hello world from ImagEHR</h1>"
+	return render_template("index.html")
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0") # NOT FOR PRODUCTION
