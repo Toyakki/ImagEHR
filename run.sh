@@ -10,4 +10,4 @@ pip install -r requirements.txt
 git submodule update --init --remote --recursive
 
 # Run your app
-python3 -m gunicorn -b 0.0.0.0:10000 -w 1 main:app
+python3 main.py
