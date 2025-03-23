@@ -8,6 +8,7 @@ from model.inference import inference # DO NOT REMOVE OR COMMENT OUT
 from json import loads, dumps
 from base64 import b64encode
 from os.path import join, abspath, dirname
+from hashlib import sha3_224
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = join(dirname(abspath(__file__)), "upload")
@@ -80,6 +81,9 @@ def patient(patient_id: str):
 		print(e)
 		return render_template("error.html", message="Failed to fetch patient info!")
 
+def sha_str(inp: str) -> str:
+	return sha3_224(inp.encode()).hexdigest()
+
 @app.route("/upload/to/<patient_id>", methods=["POST"])
 def upload_to(patient_id: str):
 	if "file" not in request.files:
@@ -88,7 +92,7 @@ def upload_to(patient_id: str):
 	if file.filename == "":
 		return render_template("error.html", message="No file specified!")
 	filename = secure_filename(file.filename)
-	file.save(join(app.config["UPLOAD_FOLDER"], f"{patient_id}-{filename}"))
+	file.save(join(app.config["UPLOAD_FOLDER"], f"{sha_str(patient_id)}{filename}"))
 	return redirect(f"/patient/{patient_id}")
 
 if __name__ == "__main__":
