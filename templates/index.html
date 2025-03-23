@@ -4,6 +4,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Hubot+Sans:ital,wght@0,200..900;1,200..900&display=swap');
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/3.0.0-beta.6/aos.css">
     <meta charset="UTF-8">
     <title>imagEHR: Home</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -79,14 +81,14 @@
         <div class="boxleft">
             <div class="maintextholder">
                 <h1 class="openingtext" STYLE="font-size: 30px; margin-bottom: -30px;
-                            font-weight: 300">AI-Driven Automation for Clinical</h1>
-                <h1 class="openingtext">RESEARCH</h1>
+                            font-weight: 300"  data-aos="fade-up" data-aos-delay="100">AI-Driven Automation for Clinical</h1>
+                <h1 class="openingtext" data-aos="fade-up" data-aos-delay="200">RESEARCH</h1>
 <!--                <h1 class="openingtext" STYLE="font-size: 40px; margin-top: -50px;-->
 <!--                            font-weight: 900;-->
 <!--                            mix-blend-mode: difference">data harmonization</h1>-->
 <!--                <h1 class="openingdes">we aid in advanced medical research</h1>-->
 <!--                <a class="buttontogo" href="/set-fhir">get started</a>-->
-                <span class="buttontogo" onclick="transitionToPage('/set-fhir')">Get started</span>
+                <span class="buttontogo" onclick="transitionToPage('/set-fhir')"  data-aos="fade-up" data-aos-delay="300">Get started</span>
             </div>
         </div>
         <div class="boxright">
@@ -100,7 +102,7 @@
 ">
 
     <div class="infosection hello" style="height: 281px;transform: translate(0%, -36%);
-                            border:none;">
+                            border:none;" data-aos="fade-up">
         <div class="descriptionholder" style="transform: translate(0%, -3%);">
             <h1 class="desctitle" style="color: #2c2c2c;">
                 <i class="fa-solid fa-lightbulb" style="color: #2c2c2c;"></i>
@@ -112,7 +114,7 @@
                 mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use.</h1>
         </div>
     </div>
-    <div class="infosection" style="height: 540px; border: none;box-shadow: none;transform: translate(0%, -19%);">
+    <div data-aos="fade-up" class="infosection" style="height: 540px; border: none;box-shadow: none;transform: translate(0%, -19%);">
         <div class="descriptionholder" style="transform: translate(0%, 1%);">
             <h1 class="desctitle" style="mix-blend-mode: overlay"><i class="fa-solid fa-hospital"></i> THE PROBLEM</h1>
             <h1 class="desctext" style="color: rgba(0,0,0,0.71)">Manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development.
@@ -123,7 +125,7 @@
 
     <div class="infosection2" style="height: 283px;transform: translate(0%, -51%);">
         <div class="infosection loki" style="height: 100%;
-                        margin-left: 0">
+                        margin-left: 0" data-aos="fade-right">
             <div class="descriptionholder" style="transform: translate(0%, 1%);
                             ">
 
@@ -138,7 +140,7 @@
             </div>
         </div>
         <div class="infosection deathstar" style="height: 100%;margin: 0;
-                        margin-right: 0">
+                        margin-right: 0" data-aos="fade-left">
             <div class="descriptionholder" style="transform: translate(0%, 1%);
                             ">
                 <h1 class="desctitle" style="mix-blend-mode: overlay;width:80%; font-size:32px;"><i class="fa-solid fa-code"></i> HOW OUR APP WORKS</h1>
@@ -150,7 +152,7 @@
     </div>
 </div>
 
-    <div id="footer" style="background:radial-gradient(black, transparent);display:flex;flex-direction: column;justify-content: center;">
+    <div data-aos="fade-up" id="footer" style="background:radial-gradient(black, transparent);display:flex;flex-direction: column;justify-content: center;">
         <h1 class="bottomt">This website has been created with love </h1>
         <h1 class="bottomt" style="font-size:30px;font-weight: 800">Shaaf Yousaf, Evan Su, Gavin Yuen, Tohya Tanemura</h1>
         <h1 class="bottomt">🔥We are the coolest group🔥</h1>
@@ -159,4 +161,7 @@
 
         </div>
     </div>
+    <script>
+        AOS.init();
+    </script>
 </body>
