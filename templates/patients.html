@@ -18,7 +18,7 @@
 	<h1>All Patients</h1>
 	<div style="display:flex;align-items:center;gap:12px;">
 		<p id="status">Fetched 0 patient records from {{ fhir }}</p>
-		<img height="14" src="/static/resources/loading.webp">
+		<img id="loading" height="14" src="/static/resources/loading.webp">
 	</div>
 	<hr>
 	<script>
@@ -47,5 +47,8 @@
 		}
 	</script>
 	{% endfor %}
+	<script>
+		document.getElementById("loading").style.display = "none";
+	</script>
 </body>
 </html>
