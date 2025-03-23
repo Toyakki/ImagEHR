@@ -18,7 +18,6 @@ def simple_chat(message: str, model: str = "command-a-03-2025") -> str:
 			messages=[
 				{"role": "user", "content": message}
 			],
-			temperature=0
 		)
 		if not response: raise Exception("cohere response is falsy")
 		if not response.message: raise Exception("cohere response.message is falsy")
