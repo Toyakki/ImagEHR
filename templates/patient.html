@@ -68,12 +68,12 @@
 		<p id="patient_summary">Generating in real-time&nbsp;<img height="8" src="/static/resources/loading.webp"></p>
 	</div>
 	<hr>
-		<div class="infosection" style="    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 0;">
-		<div class="infosection" style="height: fit-content; margin-top: 25px;border: 0;box-shadow: none;
-						align-items: flex-start;width: 94%">
+		<div class="infosection" style="margin:0 !important;    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 0;">
+		<div class="infosection" style="margin:0;height: fit-content; margin-top: 25px;border: 0;box-shadow: none;
+						align-items: flex-start;width: 100%">
 		<h3 class="patientext">Chest X-Ray Upload</h3>
 		<p>Existing images:</p>
-		<ul>
+		
 			<div class="infosection" style="display: flex;
     flex-direction: row;
     height: fit-content;
@@ -81,22 +81,22 @@
     border: 0;box-shadow: none;align-items: center;width: 94%;justify-content: space-between;">
 				<div class="infosection" style="    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 25px;border: 0;box-shadow: none;
 						align-items: flex-start;width: 94%">
-			{% for file in files %}
-				<li style="display:flex;align-items:center;">{{ file.replace(prefix, "").replace(patient_id, "") }}
-					<a class="linkbut2" style="display:block;width: 150px;height: 40px;
-							text-align: center;align-content: center;
-								text-decoration: none;" href="/trash/{{ file }}/{{ patient_id }}">delete</a>
-					</li>
-<!--			(<a href="/trash/{{ file }}/{{ patient_id }}">delete</a>)-->
-
-					{% endfor %}
-
+					<ul style="margin:0;padding:0;width:100%;">
+						{% for file in files %}
+						<li style="display:flex;align-items:center;gap:16px;margin-bottom:8px;flex-basis:1;">
+							<span>{{ file.replace(prefix, "").replace(patient_id, "") }}</span>
+							<span style="flex-grow:1;"></span>
+							<a class="linkbut2" style="display:block;width: 150px;height: 32px;
+									text-align: center;align-content: center;
+										text-decoration: none;" href="/trash/{{ file }}/{{ patient_id }}">Delete</a>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
 
 			</div>
 
-		</ul>
-			<p>Upload images (.png, .jpg, .webp, .dicom) of chest scans for automatic analysis.</p>
+		<p>Upload images (.png, .jpg, .webp, .dicom) of chest scans for automatic analysis.</p>
 		<form action="/upload/to/{{ patient_id }}" method="POST" enctype="multipart/form-data">
 			<input id="anakin" style="display: none" name="file" type="file" accept=".png, .jpg, .webp, .dicom" value="Select image">
 			<input type="button" onclick="document.getElementById('anakin').click()" class="linkbut2" value="Select image">
