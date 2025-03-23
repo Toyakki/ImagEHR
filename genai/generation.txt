@@ -21,17 +21,41 @@ Your task is to produce a structured CDISC result that:
 - Maps the EHR data into standard domains (e.g., DM for demographics, etc.).
 - Integrates the imaging mapping results into an appropriate domain (e.g., MI for imaging).
 - Organizes the output into clearly separated sections for each domain.
-- **Additionally, if any class mapping is QNAM, generate a separate supplementary table (labeled as SUPPQUAL) that contains that mapping information.**
+- Additionally, if any class mapping is QNAM, generate a separate supplementary table (labeled as SUPPQUAL) that contains that mapping information.
 - Does not include any additional commentary before the structured output.
 
-Please generate the output in a clear and organized csv format.
+Please generate the output in a clear and organized text format.
 
 Sample output:
-DOMAIN,STUDYID,USUBJID,SEX,RACE,ETHNIC,BIRTHDTC,AGE,AGEU,BMI,BMITU,HT,HTU,WT,WTU
-DM,LC2025,1,F,Asian,"Not Hispanic or Latino",2001-09-14,23,YEARS,22.5,KG/M2,160,CM,60,KG
-							
-DOMAIN,STUDYID,USUBJID,MITESTCD,MITEST,MIORRES_N1,MIORRES_N2,MIORRES_U,MILOC,MIMETHOD,MIEVAL
-MI,LC2025,1,CARDIOMEGALY,Cardiomegaly,1.77,6.41,cm2,"Middle right lobe",X-ray,Radiologist
-
-DOMAIN,STUDYID,USUBJID,RSTESTCD,RSTEST,RSORRES,RSCAT
-RS,LC2025,1,PLEURTHK,Pleurisy,Positive,CHEST X-RAY
+----------------------------------------
+DOMAIN: DM
+STUDYID: LC2025
+USUBJID: 1
+SEX: F
+RACE: Asian
+ETHNIC: Not Hispanic or Latino
+BIRTHDTC: 2001-09-14
+AGE: 23 YEARS
+BMI: 22.5 KG/M2
+HT: 160 CM
+WT: 60 KG
+----------------------------------------
+DOMAIN: MI
+STUDYID: LC2025
+USUBJID: 1
+MITESTCD: CARDIOMEGALY
+MITEST: Cardiomegaly
+MIORRES: 1.77 x 6.41 cm2
+MILOC: Middle right lobe
+MIMETHOD: X-ray
+MIEVAL: Radiologist
+----------------------------------------
+DOMAIN: RS
+STUDYID: LC2025
+USUBJID: 1
+RSTESTCD: PLEURTHK
+RSTEST: Pleurisy
+RSORRES: Positive
+RSCAT: CHEST X-RAY
+----------------------------------------
+(If applicable, a separate section labeled SUPPQUAL should be generated for QNAM mappings.)
