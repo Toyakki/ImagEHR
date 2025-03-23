@@ -54,7 +54,7 @@ body{
     width: 96%;
     height: 400px;
     bottom: 3%;
-    mix-blend-mode: darken;
+
     z-index: 10;
     /*background-image: url("/static/resources/back3.jpg");*/
     /*background-color: #0077b5;*/
