@@ -17,18 +17,35 @@
 		}
 	</style>
 </head>
-<body>
-	<div class="header">
-
-	</div>
+<body style="bakground-color: #ffffff; background-image: none">
+<div class="header">
+	<script>$(window).scroll(function() {
+		var scroll = $(window).scrollTop();
+		if (scroll >= 30) {
+			$('.header').addClass("white");
+		} else {
+			$('.header').removeClass("white");
+		}
+	});
+	document.querySelector('body').style.opacity = 1;
+	</script>
+</div>
 	<div id="statestation">
-		<h1 class="nav" style="width: 140px;color: black; text-align: left;">Patient</h1>
+		<h1 class="nav" style="width: 110px;;color: black;margin-right: 1%">PROFILE</h1>
 		<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
-		<span class="nav2" onclick="transitionToPage('/dashboard')" style="text-decoration: none;">imagEHR</span>
+		<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
 		<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
 	</div>
 
+	<div id="innerbox2" style="justify-content: flex-start;height: fit-content;">
+		<div style="height: 60px"></div>
+		<h1 class="greeting">Patient Information</h1>
+		<hr style="width: 94%;margin-top: 2%;margin-bottom: 0%">
+		<div class="infosection" style="height: fit-content;margin-top: 10px;box-shadow: none;border: none;
+						align-items: flex-start;width: 94%">
 	<div id="patient_profile"></div>
+		</div>
+
 	<script>
 		"use strict";
 
@@ -43,32 +60,67 @@
 			`;
 		})();
 	</script>
-	<hr>
-	<div>
-		<h3>Patient Summary <img height="15" src="/static/resources/powered_by_ai.png"></h3>
+
+	<div class="infosection" style="height: fit-content;margin-top: 10px;box-shadow: none;border: none;
+						align-items: flex-start;width: 94%">
+		<h3 class="patientext">Summary <img height="25" src="/static/resources/powered_by_ai.png"></h3>
 		<p id="patient_summary">Generating in real-time&nbsp;<img height="8" src="/static/resources/loading.webp"></p>
 	</div>
 	<hr>
-	<div>
-		<h3>Chest X-Ray Upload</h3>
-		<p>Upload images (.png, .jpg, .webp, .dicom) of chest scans for automatic analysis. Existing images:</p>
+		<div class="infosection" style="    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 0;">
+		<div class="infosection" style="height: fit-content; margin-top: 25px;border: 0;box-shadow: none;
+						align-items: flex-start;width: 94%">
+		<h3 class="patientext">Chest X-Ray Upload</h3>
+		<p>Existing images:</p>
 		<ul>
+			<div class="infosection" style="display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin:3px;
+    border: 0;box-shadow: none;align-items: center;width: 94%;justify-content: space-between;">
+				<div class="infosection" style="    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 25px;border: 0;box-shadow: none;
+						align-items: flex-start;width: 94%">
 			{% for file in files %}
-				<li>{{ file.replace(prefix, "").replace(patient_id, "") }} (<a href="/trash/{{ file }}/{{ patient_id }}">delete</a>)</li>
-			{% endfor %}
+				<li>{{ file.replace(prefix, "").replace(patient_id, "") }}
+					<a class="linkbut2" style="display:block;width: 150px;height: 40px;
+							text-align: center;align-content: center;
+								text-decoration: none;" href="/trash/{{ file }}/{{ patient_id }}">delete</a>
+					</li>
+<!--			(<a href="/trash/{{ file }}/{{ patient_id }}">delete</a>)-->
+
+					{% endfor %}
+
+				</div>
+
+			</div>
+
 		</ul>
+			<p>Upload images (.png, .jpg, .webp, .dicom) of chest scans for automatic analysis.</p>
 		<form action="/upload/to/{{ patient_id }}" method="POST" enctype="multipart/form-data">
-			<input name="file" type="file" accept=".png, .jpg, .webp, .dicom" value="Select image">
-			<input type="submit" value="Upload" >
+			<input id="anakin" style="display: none" name="file" type="file" accept=".png, .jpg, .webp, .dicom" value="Select image">
+			<input type="button" onclick="document.getElementById('anakin').click()" class="linkbut2" value="Select image">
+			<input class="linkbut" type="submit" value="Upload" style="    margin-left: 10px;
+">
 		</form>
 	</div>
+		</div>
 	<hr>
-	<div>
-		<h3>Create CDISC Terminology Mapping <img height="15" src="/static/resources/powered_by_ai.png"></h3>
-		<p>Combine the patient's EHR data with chest x-ray images to create a CDISC output.</p>
-		<button type="button" onclick="window.location.href = '/cdisc/{{ patient_id }}';">Start</button>
-	</div>
+		<div class="infosection" style="height: fit-content;margin-top: 0;">
+			<div class="infosection" style="display: flex;
+    flex-direction: row;
+    height: fit-content;
+    margin:3px;
+    border: 0;box-shadow: none;align-items: center;width: 94%;justify-content: space-between;">
 
+				<div class="infosection" style="    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 25px;border: 0;box-shadow: none;
+						align-items: flex-start;width: 94%">
+					<h3 class="patientext">Create CDISC Terminology Mapping <img height="25" src="/static/resources/powered_by_ai.png"></h3>
+			<p>Combine the patient's EHR data with chest x-ray images to create a CDISC output.</p>
+
+	</div>
+				<button class="linkbut3"type="button" onclick="window.location.href = '/cdisc/{{ patient_id }}';">Start</button>
+</div>
+</div>
 	<!-- Take advantage of Flask's stream_template -->
 	<script>
 		"use strict";
@@ -76,5 +128,6 @@
 		const summary = `{{ simple_chat("Please give a one paragraph summary of this patient based off of their EHR record: \n\n" + info) }}`;
 		document.getElementById("patient_summary").innerHTML = summary ? summary : "Failed to generate";
 	</script>
+	</div>
 </body>
 </html>
