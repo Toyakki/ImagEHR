@@ -9,6 +9,7 @@ from json import loads, dumps
 from base64 import b64encode
 from os.path import join, abspath, dirname
 from hashlib import sha3_224
+import os
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = join(dirname(abspath(__file__)), "upload")
@@ -61,6 +62,9 @@ def patients():
 		b64encode=b64encode
 	)
 
+def sha_str(inp: str) -> str:
+	return sha3_224(inp.encode()).hexdigest()
+
 @app.route("/patient/<patient_id>")
 def patient(patient_id: str):
 	if not fhir_api_base:
@@ -69,20 +73,21 @@ def patient(patient_id: str):
 		info = get_all_patient_info(fhir_api_base, patient_id)
 		if not info:
 			raise Exception
+		prefix = sha_str(patient_id)
+		files = [f for f in os.listdir(app.config["UPLOAD_FOLDER"]) if f.startswith(prefix)]
 		return stream_template("patient.html",
 			patient_id=patient_id,
 			patient=get_patient(fhir_api_base, patient_id),
 			info=info,
 			dumps=dumps,
 			b64encode=b64encode,
-			simple_chat=simple_chat
+			simple_chat=simple_chat,
+			files=files,
+			prefix=prefix,
 		)
 	except Exception as e:
 		print(e)
 		return render_template("error.html", message="Failed to fetch patient info!")
-
-def sha_str(inp: str) -> str:
-	return sha3_224(inp.encode()).hexdigest()
 
 @app.route("/upload/to/<patient_id>", methods=["POST"])
 def upload_to(patient_id: str):
