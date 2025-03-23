@@ -35,13 +35,13 @@
 
 	</div>
 	<div id="statestation">
-		<h1 class="nav" style="width: 140px;color: black">CDISC</h1>
+		<h1 class="nav" style="width: 140px;color: black; text-align: left;">CDISC</h1>
 		<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
 		<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
 		<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
 	</div>
 
-	<div>
+	<div id="d">
 		<h1 id="h">Generating CDISC mapping&nbsp;<img height="20" src="/static/resources/loading.webp"></h1>
 	</div>
 
@@ -59,6 +59,7 @@
 			const filename = "{{ patient_id }}-cdisc.txt";
 			const div = document.querySelector("div");
 			const downloadButton = document.createElement("button");
+			downloadButton.classList.add("linkbut");
 			downloadButton.textContent = "Download";
 			downloadButton.addEventListener("click", () => {
 				const blob = new Blob([res], { type: "text/plain" });
@@ -66,7 +67,7 @@
 				const link = document.createElement("a");
 				link.href = url;
 				link.download = filename;
-				document.body.appendChild(link);
+				document.getElementById("d").appendChild(link);
 				link.click();
 				document.body.removeChild(link);
 				URL.revokeObjectURL(url);
