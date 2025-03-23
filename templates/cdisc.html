@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CDISC Mapping Exporter</title>
+	<style>
+		body{
+			margin:0;
+			top:0;
+			left:0;
+			width:100vw;
+			height:100vh;
+			overflow:hidden;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<h1>Generating CDISC mapping&nbsp;<img height="20" src="/static/resources/loading.webp"></h1>
+	</div>
+
+	<script>
+		"use strict";
+
+		const res = `{{ gen(fhir_api_base, patient_id) }}`;
+		if (!res) {
+			document.querySelector("h1").innerHTML = "CDISC mapping generation failed!";
+			return;
+		}
+		document.querySelector("h1").innerHTML = "CDISC mapping generation successful.";
+
+		const filename = "{{ patient_id }}-cdisc.txt";
+		const div = document.querySelector("div");
+		const downloadButton = document.createElement("button");
+		downloadButton.textContent = "Download";
+		downloadButton.addEventListener("click", () => {
+			const blob = new Blob([res], { type: "text/plain" });
+			const url = URL.createObjectURL(blob);
+			const link = document.createElement("a");
+			link.href = url;
+			link.download = filename;
+			document.body.appendChild(link);
+			link.click();
+			document.body.removeChild(link);
+			URL.revokeObjectURL(url);
+		});
+		div.appendChild(downloadButton);
+	</script>
+</body>
+</html>
