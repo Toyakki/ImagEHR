@@ -42,4 +42,4 @@ def generate_cdisc_wrapper(endpoint: str, patient_id: str) -> str:
     except Exception as e:
         print("generate_cdisc_wrapper ERROR:", e)
         return ""
-    return res
+    return res.replace("`", "\\" + "`")
