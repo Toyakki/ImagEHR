@@ -34,7 +34,9 @@ def generate_cdisc(endpoint="https://r4.smarthealthit.org", patient_id = "bc6c8e
         ],
         # safety_mode="STRICT",
     )
-    print(f"Partial content: {response.message.content[0].text}")
+    
+    # print(f"Response:", response.message.content[0].text) for checking
+    return response.message.content[0].text
 
 if __name__ == "__main__":
     generate_cdisc()
