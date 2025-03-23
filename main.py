@@ -3,7 +3,7 @@ from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
-from genai.prompt import generate_cdisc
+from genai.prompt import generate_cdisc_wrapper
 from model.inference import images_dir, labels_dir # DO NOT REMOVE OR COMMENT OUT
 from json import loads, dumps
 from base64 import b64encode
@@ -138,7 +138,11 @@ def cdisc(patient_id: str):
 			dst_path = os.path.join(images_dir, filename)
 			shutil.copy(src_path, dst_path)
 
-		return generate_cdisc(fhir_api_base, patient_id)
+		return stream_template("cdisc.html",
+			patient_id=patient_id,
+			fhir_api_base=fhir_api_base,
+			gen=generate_cdisc_wrapper
+		)
 	except Exception as e:
 		print(e)
 		return render_template("error.html", message="Failed to create CDISC export!")
