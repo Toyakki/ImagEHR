@@ -25,7 +25,7 @@ CLASS_MAPPING = {
     14: {"RSTESTCD": "NOFIND", "RSTEST": "No finding", "RSCAT": "CHEST X-RAY"},
 }
 
-CUT_OFF = 0.6    # Confidence cutoff for considering a detection
+CUT_OFF = 0.5    # Confidence cutoff for considering a detection
 
 def yolo2voc(image_height, image_width, bboxes) -> np.ndarray:
     """

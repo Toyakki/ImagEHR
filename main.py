@@ -5,6 +5,7 @@ from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from genai.prompt import generate_cdisc_wrapper
 from model.inference import images_dir, labels_dir # DO NOT REMOVE OR COMMENT OUT
+from model.preprocess import preprocess_images
 from json import loads, dumps
 from base64 import b64encode
 from os.path import join, abspath, dirname
@@ -138,6 +139,8 @@ def cdisc(patient_id: str):
 			dst_path = os.path.join(images_dir, filename)
 			shutil.copy(src_path, dst_path)
 
+		preprocess_images(upload_folder, images_dir, output_size=(1024, 1024))
+
 		return stream_template("cdisc.html",
 			patient_id=patient_id,
 			fhir_api_base=fhir_api_base,
@@ -146,6 +149,17 @@ def cdisc(patient_id: str):
 	except Exception as e:
 		print(e)
 		return render_template("error.html", message="Failed to create CDISC export!")
+
+@app.route("/trash/<filename>/<patient_id>")
+def trash(filename: str, patient_id: str):
+	try:
+		file_path = os.path.join(app.config["UPLOAD_FOLDER"], secure_filename(filename))
+		if os.path.exists(file_path):
+			os.remove(file_path)
+		return redirect(f"/patient/{patient_id}")
+	except Exception as e:
+		print(e)
+		return render_template("error.html", message="Failed to remove file.")
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
