@@ -13,6 +13,8 @@ def generate_cdisc(endpoint: str, patient_id: str) -> str:
     May raise Exceptions, handle them!
     """
     res = get_all_patient_info(endpoint, patient_id)
+    if not res:
+        raise Exception("get_all_patient call was empty")
     res = dumps(loads(res), indent=2)
     record = inference()
 
