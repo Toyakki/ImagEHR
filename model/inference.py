@@ -4,9 +4,21 @@ from sys import executable
 from json import dumps
 from subprocess import run
 from model.utils import process_detections
+from os import makedirs
+from os.path import join, dirname, abspath, exists
 
 if not exists(join(dirname(abspath(__file__)), "pretrained/runs/best.pt")):
-	raise Exception("Missing file /model/pretrained/runs/best.pt; download here: https://is.gd/plZt4M")
+	print("Missing file /model/pretrained/runs/best.pt; downloading from GH releases")
+	import urllib.request
+
+	dest_dir = join(dirname(abspath(__file__)), "pretrained/runs")
+	if not exists(dest_dir):
+		makedirs(dest_dir)
+
+	url = "https://github.com/Toyakki/ImagEHR/releases/download/1.1.1/best.pt"
+	dest_file = join(dest_dir, "best.pt")
+	urllib.request.urlretrieve(url, dest_file)
+	print("Download complete.")
 
 yolov5_dir = join(dirname(abspath(__file__)), "pretrained/yolov5")
 labels_dir = join(dirname(abspath(__file__)), "pretrained/yolov5/runs/detect/exp/labels")
