@@ -9,11 +9,12 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/static/styles/index.css">
     <meta name="view-transition" content="same-origin">
+    <script src="https://kit.fontawesome.com/f3348a7004.js" crossorigin="anonymous"></script>
     <style>
         .hello {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background: linear-gradient(-45deg, #9bf3f0, #23a6d5, #23d5ab);
             background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+            animation: gradient 10s ease infinite;
         }
 
         @keyframes gradient {
@@ -27,16 +28,51 @@
                 background-position: 0% 50%;
             }
         }
-    </style>
-<body>
+        .loki {
+            background: linear-gradient(-45deg, #8f8f8f, #b9ebff, #498c7f);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+        }
 
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .deathstar {
+            background: linear-gradient(-45deg, #233bd5, #d8d8d8, #35ff7b);
+            background-size: 400% 400%;
+            animation: gradient 20s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+    </style>
+<body style="margin: 0;">
 <div class="header">
     <h1 class="nav">FAQ</h1>
     <h1 class="nav">Open Source</h1>
     <h1 class="nav">Team</h1>
 </div>
 <div id="statestation">
-    <a class="nav2" href="/" style="text-decoration: none;">imagEHR</a>
+    <a class="nav2" href="/" style="text-decoration: none;">imagEHR
+        </a>
 </div>
 <script src="/static/java/main.js"></script>
     <div id="innerbox">
@@ -56,32 +92,64 @@
         <div class="boxright">
         </div>
     </div>
-    <div class="infosection hello" style="height: 281px">
+<div style="    background-color: #ffffff;
+    height: 880px;
+    width: 100%;
+    top: 900px;
+    margin-bottom: 180px;
+}">
+
+    <div class="infosection hello" style="height: 281px;transform: translate(0%, -36%);
+                            border:none;">
         <div class="descriptionholder" style="transform: translate(0%, -3%);">
-            <h1 class="desctitle" style="mix-blend-mode: overlay;">INSPIRATION</h1>
+            <h1 class="desctitle" style="color: #2c2c2c;">
+                <i class="fa-solid fa-lightbulb" style="color: #2c2c2c;"></i>
+                INSPIRATION
+                </h1>
             <h1 class="desctext" style="color: rgba(0,0,0,0.71)">We were inspired by the potential of AI to empower healthcare
                 professionals by reducing repetitive, time-consuming tasks and letting them focus
                 on what matters most: patients. Our goal was to build an AI application that automates the extraction and
                 mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use.</h1>
         </div>
     </div>
-<div class="infosection" style="height: 581px">
-    <div class="descriptionholder" style="transform: translate(0%, -3%);">
-        <h1 class="desctitle" style="mix-blend-mode: overlay">THE PROBLEM</h1>
-        <h1 class="desctext" style="color: rgba(0,0,0,0.71)">Manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development.
-            Semi-automation can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.</h1>
-        <img style="width: 93%;z-index: 10" src="/static/resources/problemslide.png">
-    </div>
-</div>
-    <div class="infosection2" style="height:400px;">
-        <div class="descriptionholder" style="left: 8%;">
-            <h1 class="desctitle" style="text-align: end;width: 40%;">Our Solution</h1>
-            <h1 class="desctext" style="text-align: end; width: 40%">Real-world clinical data from EHRs and medical
-                images is unstructured and incompatible with regulatory
-                standards like CDISC SDTM which makes clinical research and
-                regulatory submission slow, manual, and error-prone.</h1>
+    <div class="infosection" style="height: 540px; border: none;box-shadow: none;transform: translate(0%, -19%);">
+        <div class="descriptionholder" style="transform: translate(0%, 1%);">
+            <h1 class="desctitle" style="mix-blend-mode: overlay"><i class="fa-solid fa-hospital"></i> THE PROBLEM</h1>
+            <h1 class="desctext" style="color: rgba(0,0,0,0.71)">Manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development.
+                Semi-automation can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.</h1>
+            <img style="width: 93%;z-index: 10" src="/static/resources/problemslide.png">
         </div>
     </div>
+
+    <div class="infosection2" style="height: 283px;transform: translate(0%, -51%);">
+        <div class="infosection loki" style="height: 100%;
+                        margin-left: 0">
+            <div class="descriptionholder" style="transform: translate(0%, 1%);
+                            ">
+
+                    <h1 class="desctitle" style="mix-blend-mode: overlay">
+                        <i class="fa-solid fa-robot"></i> WHAT OUR APP DOES</h1>
+
+
+
+                <h1 class="desctext" style="color: rgba(0,0,0,0.71)">Automates data extraction of
+                    EHR (text) and X-ray (image) data, and then infers how it can be mapped to
+                    industry standards for downstream research, trial, and regulatory use.</h1>
+            </div>
+        </div>
+        <div class="infosection deathstar" style="height: 100%;margin: 0;
+                        margin-right: 0">
+            <div class="descriptionholder" style="transform: translate(0%, 1%);
+                            ">
+                <h1 class="desctitle" style="mix-blend-mode: overlay"><i class="fa-solid fa-code"></i> HOW OUR APP WORKS</h1>
+                <h1 class="desctext" style="color: rgba(0,0,0,0.71)">Extract EHR insights and X-ray
+                    data with Cohere, predict and evaluate mappings to SDTM
+                    domains, then output an industry-ready CSV/JSON file.</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div id="footer">
         <h1 class="bottomt" style="padding-top: 50px">This website has been created with love </h1>
         <h1 class="bottomt" style="font-size:30px;font-weight: 800">Shaaf Yousaf, Evan Su, Gavin Yuen, Tohya Tanemura</h1>

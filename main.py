@@ -5,6 +5,7 @@ from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from genai.prompt import generate_cdisc_wrapper
 from model.inference import images_dir, labels_dir # DO NOT REMOVE OR COMMENT OUT
+from model.preprocess import preprocess_images
 from json import loads, dumps
 from base64 import b64encode
 from os.path import join, abspath, dirname
@@ -137,6 +138,8 @@ def cdisc(patient_id: str):
 			src_path = os.path.join(upload_folder, filename)
 			dst_path = os.path.join(images_dir, filename)
 			shutil.copy(src_path, dst_path)
+
+		preprocess_images(upload_folder, images_dir, output_size=(1024, 1024))
 
 		return stream_template("cdisc.html",
 			patient_id=patient_id,

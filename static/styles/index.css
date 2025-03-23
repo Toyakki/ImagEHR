@@ -43,7 +43,7 @@ body{
     bottom: 3%;
     background-color: rgba(9, 3, 3, 0.72);
     border-radius: 10px;
-    box-shadow: 0px 0px 165px -45px;
+    box-shadow: 0px 0px 66px -40px;
     backdrop-filter: invert(80%);
 }
 .infosection{
@@ -55,28 +55,26 @@ body{
     height: 400px;
     bottom: 3%;
     mix-blend-mode: darken;
+    z-index: 10;
     /*background-image: url("/static/resources/back3.jpg");*/
     /*background-color: #0077b5;*/
     background-size: cover;
     border-radius: 10px;
-    box-shadow: 0px 0px 165px -45px;
+    box-shadow: 0px 0px 66px -40px;
     backdrop-filter: blur(10px);
     justify-content: center;
+    border: 1px solid #404040;
 }
 .infosection2{
     margin: 2%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     width: 96%;
-    height: 265px;
-    bottom: 3%;
-    mix-blend-mode: darken;
-    background-color: beige;
-    background-size: cover;
+    height: 400px;
+
+    background-color: rgba(0, 119, 181, 0);
     border-radius: 10px;
-    box-shadow: 0px 0px 165px -45px;
-    backdrop-filter: blur(10px);
     justify-content: center;
 }
 .nav{
@@ -204,8 +202,8 @@ body{
     width: 69%;
     font-size: 40px;
     font-family: "Hubot Sans", sans-serif;
-    font-weight: 900;
-    color: #000000;
+    font-weight: 600;
+    color: #000000d6;
 }
 .desctext{
     margin: 0;
