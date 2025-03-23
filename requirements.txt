@@ -11,3 +11,4 @@ numpy
 tqdm >= 4.67.1
 ultralytics >= 8.3.94
 werkzeug
+pydicom >= 3.0.1
