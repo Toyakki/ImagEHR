@@ -13,3 +13,5 @@ ultralytics >= 8.3.94
 werkzeug
 pydicom >= 3.0.1
 gunicorn
+gitpython >= 3.1.30
+setuptools >= 70.0.0
