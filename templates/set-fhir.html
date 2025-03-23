@@ -5,11 +5,29 @@
 	</style>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Set FHIR endpoint</title>
+	<title>Set FHIR Endpoint URL</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<link rel="stylesheet" href="/static/styles/index.css">
 	<meta name="view-transition" content="same-origin">
 	<script src="https://kit.fontawesome.com/f3348a7004.js" crossorigin="anonymous"></script>
+	<style>
+		.linkdrop{
+			outline:none;
+			background:transparent;
+			border:1px solid #333;
+			height:40px;
+			font-size:20px;
+			line-height:20px;
+		}
+		.linkbut{
+			height:40px;
+			font-size: 20px;
+			line-height: 20px;
+		}
+		.linkdrop::placeholder{
+			color:#666;
+		}
+	</style>
 </head>
 	<body>
 	<div class="header">
@@ -18,21 +36,21 @@
 		<div id="statestation">
 			<h1 class="nav" style="width: 200px;color: black">UPLOAD STATION</h1>
 			<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
-			<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
+			<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">ImagEHR</span>
 	<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
 		</div>
 	</div>
 	<script src="/static/java/main.js"></script>
 	<div id="innerbox2" style="margin-top: 3%">
 		<div class="maintextholder2">
-			<h1 class="uploadtext" style="font-size: 20px">Enter your</h1>
-			<h1 class="uploadtext" >FHIR API base URL:</h1>
+			<h1 class="uploadtext" style="font-size: 20px">Enter your organization's</h1>
+			<h1 class="uploadtext" >FHIR API endpoint:</h1>
 		</div>
 
 			<form action="/set-fhir" method="POST" style="display: flex; flex-direction: column; align-items: center;">
-				<div class="boxupload" style="margin-top: 1vw">
+				<div class="boxupload" style="margin-top: 32px">
 					<input class="linkdrop" required name="fhir" type="text" placeholder="https://r4.smarthealthit.org">
-					<input class="linkbut" type="submit" value="feed AI">
+					<input class="linkbut" type="submit" value="Set">
 				</div>
 
 			</form>

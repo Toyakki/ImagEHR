@@ -21,8 +21,19 @@
 		})();
 	</script>
 	<hr>
-	<code>
-		{{ info }}
-	</code>
+	<div>
+		<h3>Patient Summary <img height="15" src="/static/resources/powered_by_ai.png"></h3>
+		<p id="patient_summary">Generating in real-time&nbsp;<img height="8" src="/static/resources/loading.webp"></p>
+	</div>
+	<hr>
+	<p>Placeholder for upload boxes</p>
+
+	<!-- Take advantage of Flask's stream_template -->
+	<script>
+		"use strict";
+
+		const summary = `{{ simple_chat("Please give a one paragraph summary of this patient based off of their EHR record: \n\n" + info) }}`;
+		document.getElementById("patient_summary").innerHTML = summary ? summary : "Failed to generate";
+	</script>
 </body>
 </html>
