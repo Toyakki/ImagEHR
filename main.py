@@ -4,7 +4,7 @@ from flask_cors import CORS
 from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
 from genai.prompt import generate_cdisc
-from model.inference import inference, images_dir, labels_dir # DO NOT REMOVE OR COMMENT OUT
+from model.inference import images_dir, labels_dir # DO NOT REMOVE OR COMMENT OUT
 from json import loads, dumps
 from base64 import b64encode
 from os.path import join, abspath, dirname
@@ -115,11 +115,13 @@ def cdisc(patient_id: str):
 		prefix = sha_str(patient_id)
 		files = [f for f in os.listdir(app.config["UPLOAD_FOLDER"]) if f.startswith(prefix)]
 
+		os.makedirs(images_dir, exist_ok=True)
 		for filename in os.listdir(images_dir):
 			file_path = os.path.join(images_dir, filename)
 			if os.path.isfile(file_path):
 				os.remove(file_path)
 
+		os.makedirs(labels_dir, exist_ok=True)
 		for filename in os.listdir(labels_dir):
 			file_path = os.path.join(labels_dir, filename)
 			if os.path.isfile(file_path):
