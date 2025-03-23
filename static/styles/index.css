@@ -302,6 +302,7 @@ body{
 }
 .linkdrop{
     margin:10px;
+    background-color: rgba(0, 0, 0, 0);
     transition: width 0.4s ease-in-out;
     font-family: "Hubot Sans", sans-serif;
     border: 1px solid #d5d5d5;
@@ -392,7 +393,7 @@ body{
     height: 100%;
      /*background-color: rgb(14, 14, 14);*/
     border-radius: 15px;
-    box-shadow: 0px 0px 364px 33px #00000054;
+    box-shadow: 0px 0px 85px 5px #00000054;
     backdrop-filter: blur(10px);
 }
 #dash2{
@@ -405,7 +406,7 @@ body{
     justify-content: center;
     height: 100%;
 
-    box-shadow: 0px 0px 364px 33px #00000054;
+    box-shadow: 0px 0px 85px 5px #00000054;
     backdrop-filter: blur(10px);
 }
 #dash3{

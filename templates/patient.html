@@ -68,12 +68,14 @@
 		<p id="patient_summary">Generating in real-time&nbsp;<img height="8" src="/static/resources/loading.webp"></p>
 	</div>
 	<hr>
-		<div class="infosection" style="padding:48px;box-sizing:border-box;    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 0;">
-		<div class="infosection" style="margin:0;height: fit-content; margin-top: 25px;border: 0;box-shadow: none;
+		<div class="infosection" style="padding:48px;box-sizing:border-box;
+		box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 0;">
+		<div class="infosection" style="margin:0;height: fit-content; margin-top: 25px;
+		border: 0;box-shadow: none;
 						align-items: flex-start;width: 100%">
 		<h3 class="patientext">Chest X-Ray Upload</h3>
 		<p>Existing images:</p>
-		
+			<hr style="color:black;width: 100%;">
 			<div class="infosection" style="display: flex;
     flex-direction: row;
     height: fit-content;
@@ -95,7 +97,7 @@
 				</div>
 
 			</div>
-
+			<hr style="color:black;width: 100%;">
 		<p>Upload images (.png, .jpg, .webp, .dicom) of chest scans for automatic analysis.</p>
 		<form action="/upload/to/{{ patient_id }}" method="POST" enctype="multipart/form-data">
 			<input id="anakin" style="display: none" name="file" type="file" accept=".png, .jpg, .webp, .dicom" value="Select image">
