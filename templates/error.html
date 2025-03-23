@@ -1,10 +1,71 @@
 <html lang="en">
 <head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Hubot+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+	</style>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>imagEHR: an error occured</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="/static/styles/index.css">
+	<meta name="view-transition" content="same-origin">
+	<script src="https://kit.fontawesome.com/f3348a7004.js" crossorigin="anonymous"></script>
+	<style>
+		.linkdrop{
+			outline:none;
+			background:transparent;
+			border:1px solid #333;
+			height:40px;
+			font-size:20px;
+			line-height:20px;
+		}
+		.linkbut{
+			height:40px;
+			font-size: 20px;
+			line-height: 20px;
+		}
+		.linkdrop::placeholder{
+			color:#666;
+		}
+		body {
+			background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+		}
+
+		@keyframes gradient {
+			0% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+			100% {
+				background-position: 0% 50%;
+			}
+		}
+	</style>
 </head>
 <body>
-	<p>{{ message }}</p>
+<div class="header">
+	<!--    <h1 class="nav" style="margin-bottom:2px;left: 10.7%;font-size:27px;font-weight:100;position: absolute;-->
+	<!--                ">|</h1>-->
+	<div id="statestation">
+		<h1 class="nav" style="width: 100px;color: black">ERROR</h1>
+		<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
+		<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
+		<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
+	</div>
+</div>
+<script src="/static/java/main.js"></script>
+<div id="innerbox2" >
+	<div class="maintextholder2" style="margin-right: 0">
+		<h1 class="uploadtext" style="font-size: 20px;
+				font-weight: 400; width: 100%">Darth Vader lost his saber because you were not careful:</h1>
+		<h1 class="uploadtext" style="font-size: 40px;
+				font-weight: 800; width: 100%">{{ message }}</h1>
+	</div>
+	<span class="buttontogo" style="color:#222222;background-color: rgba(80,80,80,0.24);margin-top: 1%;" onclick="transitionToPage('/set-fhir')">go to base</span>
+</div>
 </body>
 </html>

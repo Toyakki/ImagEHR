@@ -5,7 +5,7 @@
     align-items: center;
     width: 97%;
     height: 50px;
-    top: 3%;
+    top: 32px;
     background-color: rgba(113, 113, 113, 0);
     position: fixed;
     border-radius: 10px;
@@ -18,7 +18,7 @@
     align-items: center;
     width: 98.5%;
     height: 50px;
-    top: 3%;
+    top: 32px;
     background-color: rgb(255 255 255 / 0%);
     box-shadow: 0px 0px 165px 6px;
     position: fixed;
@@ -61,6 +61,7 @@ body{
     border-radius: 10px;
     box-shadow: 0px 0px 165px -45px;
     backdrop-filter: blur(10px);
+    justify-content: center;
 }
 .infosection2{
     margin: 2%;
@@ -76,6 +77,7 @@ body{
     border-radius: 10px;
     box-shadow: 0px 0px 165px -45px;
     backdrop-filter: blur(10px);
+    justify-content: center;
 }
 .nav{
     margin: 0;
@@ -114,7 +116,7 @@ body{
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-color: rgba(255, 255, 255, 0);
     position: relative;
     align-items: center;
@@ -182,14 +184,13 @@ body{
     margin: 0;
     font-size: 15px;
     font-family: "Hubot Sans", sans-serif;
-    font-weight: 100;
+    font-weight: 300;
     color: #ffffff;
 }
 .descriptionholder{
     height: fit-content;
     position: absolute;
-    left: 55%;
-    transform: translate(0%, 29%);
+    left: 10%;
 }
 .descriptionholder2{
     height: fit-content;
@@ -203,15 +204,15 @@ body{
     width: 69%;
     font-size: 40px;
     font-family: "Hubot Sans", sans-serif;
-    font-weight: 700;
+    font-weight: 900;
     color: #000000;
 }
 .desctext{
     margin: 0;
-    width: 69%;
+    width: 90%;
     font-size: 20px;
     font-family: "Hubot Sans", sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     color: #000000;
 }
 #leftupload{
@@ -245,7 +246,7 @@ body{
     align-items: center;
     justify-content: center;
     width: 50vw;
-    height: 5vw;
+    height: 65px;
     /*background-color: rgb(14, 14, 14);*/
     border-radius: 15px;
     box-shadow: 0px 0px 364px 33px #00000054;
@@ -263,6 +264,14 @@ body{
     align-items: center;
     justify-content: flex-start;
 }
+.maintextholder4{
+    height: 22px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
 
 #statestation{
     display: flex;
@@ -271,6 +280,8 @@ body{
     margin: 0;
     position: fixed;
     left: 3%;
+    top: 42px;
+    z-index: 1000;
     align-items: center;
 }
 .uploadtext{

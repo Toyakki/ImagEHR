@@ -9,15 +9,34 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/static/styles/index.css">
     <meta name="view-transition" content="same-origin">
+    <style>
+        .hello {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+    </style>
 <body>
 
 <div class="header">
     <h1 class="nav">FAQ</h1>
     <h1 class="nav">Open Source</h1>
     <h1 class="nav">Team</h1>
-    <div id="statestation">
-        <a class="nav2" href="/" style="text-decoration: none;">imagEHR</a>
-    </div>
+</div>
+<div id="statestation">
+    <a class="nav2" href="/" style="text-decoration: none;">imagEHR</a>
 </div>
 <script src="/static/java/main.js"></script>
     <div id="innerbox">
@@ -37,27 +56,38 @@
         <div class="boxright">
         </div>
     </div>
-    <div class="infosection">
-        <div class="descriptionholder">
-            <h1 class="desctitle">The Problem</h1>
-            <h1 class="desctext">Real-world clinical data from EHRs and medical
+    <div class="infosection hello" style="height: 281px">
+        <div class="descriptionholder" style="transform: translate(0%, -3%);">
+            <h1 class="desctitle" style="mix-blend-mode: overlay;">INSPIRATION</h1>
+            <h1 class="desctext" style="color: rgba(0,0,0,0.71)">We were inspired by the potential of AI to empower healthcare
+                professionals by reducing repetitive, time-consuming tasks and letting them focus
+                on what matters most: patients. Our goal was to build an AI application that automates the extraction and
+                mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use.</h1>
+        </div>
+    </div>
+<div class="infosection" style="height: 581px">
+    <div class="descriptionholder" style="transform: translate(0%, -3%);">
+        <h1 class="desctitle" style="mix-blend-mode: overlay">THE PROBLEM</h1>
+        <h1 class="desctext" style="color: rgba(0,0,0,0.71)">Manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development.
+            Semi-automation can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.</h1>
+        <img style="width: 93%;z-index: 10" src="/static/resources/problemslide.png">
+    </div>
+</div>
+    <div class="infosection2" style="height:400px;">
+        <div class="descriptionholder" style="left: 8%;">
+            <h1 class="desctitle" style="text-align: end;width: 40%;">Our Solution</h1>
+            <h1 class="desctext" style="text-align: end; width: 40%">Real-world clinical data from EHRs and medical
                 images is unstructured and incompatible with regulatory
                 standards like CDISC SDTM which makes clinical research and
                 regulatory submission slow, manual, and error-prone.</h1>
         </div>
     </div>
-    <div class="infosection2" style="height:400px;">
-        <div class="descriptionholder2">
-            <h1 class="desctitle" style="text-align: end;">Our Solution</h1>
-            <h1 class="desctext" style="text-align: end; width: 40%">With the imagEHR platform,
-                your FHIR patient data and scan images flow through our automated pipeline,
-                allowing our intelligent LLM-powered systems to generate standardized EHR outputs.</h1>
-        </div>
-    </div>
     <div id="footer">
-        <h1 class="bottomt" style="padding-top: 50px">This website has been created with love</h1>
+        <h1 class="bottomt" style="padding-top: 50px">This website has been created with love </h1>
+        <h1 class="bottomt" style="font-size:30px;font-weight: 800">Shaaf Yousaf, Evan Su, Gavin Yuen, Tohya Tanemura</h1>
         <h1 class="bottomt">🔥We are the coolest group🔥</h1>
-        <div class="links">
+
+        <div class="links" style="display: flex;flex-direction: column;">
 
         </div>
     </div>

@@ -25,7 +25,7 @@
 			line-height: 20px;
 		}
 		.linkdrop::placeholder{
-			color:#666;
+			color: #000000;
 		}
 	</style>
 </head>
@@ -33,22 +33,22 @@
 	<div class="header">
 		<!--    <h1 class="nav" style="margin-bottom:2px;left: 10.7%;font-size:27px;font-weight:100;position: absolute;-->
 		<!--                ">|</h1>-->
-		<div id="statestation">
-			<h1 class="nav" style="width: 200px;color: black">UPLOAD STATION</h1>
-			<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
-			<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
-	<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
-		</div>
+	</div>
+	<div id="statestation">
+		<h1 class="nav" style="width: 200px;color: black">UPLOAD STATION</h1>
+		<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
+		<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
+		<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
 	</div>
 	<script src="/static/java/main.js"></script>
-	<div id="innerbox2" style="margin-top: 3%">
-		<div class="maintextholder2">
-			<h1 class="uploadtext" style="font-size: 20px">Enter your organization's</h1>
+	<div id="innerbox2">
+		<div class="maintextholder2" style="margin-right: 0">
+			<h1 class="uploadtext" style="font-size: 20px;mix-blend-mode: overlay;">Enter your organization's</h1>
 			<h1 class="uploadtext" >FHIR API endpoint:</h1>
 		</div>
 
 			<form action="/set-fhir" method="POST" style="display: flex; flex-direction: column; align-items: center;">
-				<div class="boxupload" style="margin-top: 32px">
+				<div class="boxupload" style="margin-top: 10px">
 					<input class="linkdrop" required name="fhir" type="text" placeholder="https://r4.smarthealthit.org">
 					<input class="linkbut" type="submit" value="Set">
 				</div>

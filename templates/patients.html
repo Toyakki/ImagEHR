@@ -1,32 +1,69 @@
 <html lang="en">
 <head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Hubot+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+	</style>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>View Patients</title>
 	<style>
 		.patient{
+			width: 94%;
+			font-family: "Hubot Sans", sans-serif;
+			font-weight: 400;
 			border: 1px solid #ccc;
 			border-radius: 12px;
 			padding: 16px;
 			box-sizing: border-box;
 			cursor: pointer;
-			margin-bottom: 8px;
+			margin-bottom: 14px;
 		}
 	</style>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="/static/styles/index.css">
+	<meta name="view-transition" content="same-origin">
 </head>
-<body>
-	<h1>All Patients</h1>
-	<div style="display:flex;align-items:center;gap:12px;">
-		<p id="status">Fetched 0 patient records from {{ fhir }}</p>
-		<img id="loading" height="14" src="/static/resources/loading.webp">
+<body style="bakground-color: #ffffff; background-image: none">
+<script src="/static/java/main.js"></script>
+	<div class="header">
+		<script>$(window).scroll(function() {
+			var scroll = $(window).scrollTop();
+			if (scroll >= 30) {
+				$('.header').addClass("white");
+			} else {
+				$('.header').removeClass("white");
+			}
+				});
+		document.querySelector('body').style.opacity = 1;
+		</script>
 	</div>
-	<hr>
-	<script>
-		var counter = 0;
-		const increment = () => {
-			document.getElementById("status").innerHTML = `Fetched ${++counter} patient records from {{ fhir }}`;
-		};
-	</script>
+<div id="statestation">
+	<img id="loading" height="14" src="/static/resources/loading.webp">
+	<h1 class="nav" style="width: 120px;color: black;margin-right: 1%">DATA HUB</h1>
+	<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
+	<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
+	<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
+</div>
+
+
+<div id="innerbox2" style="justify-content: flex-start;height: fit-content;">
+	<div style="height: 60px"></div>
+	<h1 class="greeting">Active Patient Data</h1>
+	<div class="maintextholder4">
+		<div style="display:flex;align-items:center;gap:12px;">
+			<p id="status" style="font-family: Hubot Sans, sans-serif;
+				font-size: 16px;font-weight: 500"
+			>Fetched 0 patient records from {{ fhir }}</p>
+			<script>
+				var counter = 0;
+				const increment = () => {
+					document.getElementById("status").innerHTML = `Fetched ${++counter} patient records from {{ fhir }}`;
+				};
+			</script>
+		</div>
+	</div>
+	<hr style="width: 94%;margin-top: 2%;margin-bottom: 2%">
+
 	{% for id in ids %}
 	<div id="patient-{{ id }}" class="patient" onclick="window.location.href = '/patient/{{ id }}';"></div>
 	<script>
@@ -50,5 +87,12 @@
 	<script>
 		document.getElementById("loading").style.display = "none";
 	</script>
+
+
+
+
+
+
+</div>
 </body>
 </html>
