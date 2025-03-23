@@ -7,7 +7,7 @@ You are a data transformation engine that generates a structured CDISC result fo
        "MITESTCD": "CARDIOMEGALY",
        "MIORRES": "1.77 x 6.41 cm^2",
        "MILOC": "middle Right lobe",
-       "MIMETHOD": "x-ray",
+       "MIMETHOD": "CHEST X-RAY",
        "MIEVAL": "Radiologist"
      },
      {
