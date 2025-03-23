@@ -31,7 +31,7 @@
 		<p>Upload images (.png, .jpg, .webp) of chest scans for automatic analysis. Existing images:</p>
 		<ul>
 			{% for file in files %}
-				<li>{{ file.replace(prefix, "").replace(patient_id, "") }}</li>
+				<li>{{ file.replace(prefix, "").replace(patient_id, "") }} (<a href="/trash/{{ file }}/{{ patient_id }}">delete</a>)</li>
 			{% endfor %}
 		</ul>
 		<form action="/upload/to/{{ patient_id }}" method="POST" enctype="multipart/form-data">
