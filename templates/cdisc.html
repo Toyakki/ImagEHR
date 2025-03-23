@@ -41,7 +41,7 @@
 		<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
 	</div>
 
-	<div id="d">
+	<div id="d" style="text-align: center;">
 		<h1 id="h">Generating CDISC mapping&nbsp;<img height="20" src="/static/resources/loading.webp"></h1>
 	</div>
 
@@ -57,14 +57,16 @@
 			document.querySelector("#h").innerHTML = "CDISC mapping generation successful.";
 
 			const filename = "{{ patient_id }}-cdisc.txt";
-			const div = document.querySelector("div");
+			const div = document.querySelector("#d");
 			const downloadButton = document.createElement("button");
+			downloadButton.type = "button";
 			downloadButton.classList.add("linkbut");
 			downloadButton.textContent = "Download";
 			downloadButton.addEventListener("click", () => {
 				const blob = new Blob([res], { type: "text/plain" });
 				const url = URL.createObjectURL(blob);
 				const link = document.createElement("a");
+				link.style.display = "none";
 				link.href = url;
 				link.download = filename;
 				document.getElementById("d").appendChild(link);
