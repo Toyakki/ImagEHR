@@ -161,5 +161,9 @@ def trash(filename: str, patient_id: str):
 		print(e)
 		return render_template("error.html", message="Failed to remove file.")
 
+@app.route("/set_cohere/<api_key>")
+def set_cohere(api_key: str):
+	os.environ["COHERE_API_KEY"] = api_key
+
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
