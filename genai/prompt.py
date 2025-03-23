@@ -35,3 +35,11 @@ CDISC Image Information (JSON):\n```\n{record}\n```\n"""
     if not response:
         raise Exception("empty response from cohere")
     return response
+
+def generate_cdisc_wrapper(endpoint: str, patient_id: str) -> str:
+    try:
+        res = generate_cdisc()
+    except Exception as e:
+        print("generate_cdisc_wrapper ERROR:", e)
+        return ""
+    return res
