@@ -38,7 +38,7 @@ CDISC Image Information (JSON):\n```\n{record}\n```\n"""
 
 def generate_cdisc_wrapper(endpoint: str, patient_id: str) -> str:
     try:
-        res = generate_cdisc()
+        res = generate_cdisc(endpoint, patient_id)
     except Exception as e:
         print("generate_cdisc_wrapper ERROR:", e)
         return ""
