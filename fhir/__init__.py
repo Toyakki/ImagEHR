@@ -1,6 +1,7 @@
 from fhirclient.client import FHIRClient
 from fhirclient.models.patient import Patient
 from requests import get
+from json import dumps
 
 def get_all_patient_ids(api_base: str) -> list[str]:
 	"""
