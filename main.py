@@ -164,6 +164,7 @@ def trash(filename: str, patient_id: str):
 @app.route("/set_cohere/<api_key>")
 def set_cohere(api_key: str):
 	os.environ["COHERE_API_KEY"] = api_key
+	return "OK"
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
