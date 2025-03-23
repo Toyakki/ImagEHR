@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Hubot+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>imagEHR: Dashboard</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="/static/styles/index.css">
+	<meta name="view-transition" content="same-origin">
+</head>
+<body>
+	<script src="/static/java/main.js"></script>
+	<div class="header">
+		<div id="statestation">
+			<h1 class="nav" style="width: 140px;color: black">DASHBOARD</h1>
+			<h1 class="nav" style="width: 10px;padding-left: 3%; color: black">|</h1>
+			<span class="nav2" onclick="transitionToPage('/')" style="text-decoration: none;">imagEHR</span>
+			<!--		<a class="nav2" href="/" style="text-decoration: none;">imgEHR</a>-->
+		</div>
+	</div>
+	<div id="innerbox2" style="justify-content: flex-start;height: 97vh;">
+		<div style="height: 60px"></div>
+		<h1 class="greeting">Welcome Aboard.</h1>
+		<div class="maintextholder3">
+			<div id="dash" style="margin-top: 1vw;border-radius: 10px;">
+				<h1 class="uploadtext" style="width:95%;font-size: 20px;font-weight: 400;
+								text-align: left">Your FHIR endpoint:</h1>
+			</div>
+			<div style="display: flex;width: 100%">
+				<div id="dash" style="border-radius: 8px;margin-top: 1vw;width: 79%;margin-right: 1%;
+background-color: #1C1C1CD1">
+					<h1 class="uploadtext"style="font-size: 25px;color: #ffd700;font-weight: 600;
+							">{{ fhir }}</h1>
+				</div>
+				<div id="dash2">
+					<a class="linkbut" style="width: 100%;height: 100%;
+							text-align: center;align-content: center;
+								text-decoration: none" href="/set-fhir">CHANGE</a>
+				</div>
+			</div>
+			<div id="dash" style="margin-top: 2vw;border-radius: 10px;">
+				<button class="linkbut2"  style="width: 100%;height: 100%;
+							text-align: center;align-content: center;
+								text-decoration: none;
+								font-size: xx-large" onclick="window.location.href = '/patients'">PATIENT DATA</button>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>
