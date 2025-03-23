@@ -39,6 +39,12 @@
 			<input type="submit" value="Upload" >
 		</form>
 	</div>
+	<hr>
+	<div>
+		<h3>Create CDISC Terminology Mapping</h3>
+		<p>Combine the patient's EHR data with chest x-ray images to create a CDISC output.</p>
+		<button type="button" onclick="window.location.href = '/cdisc/{{ patient_id }}';">Start</button>
+	</div>
 
 	<!-- Take advantage of Flask's stream_template -->
 	<script>
