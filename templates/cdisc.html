@@ -62,6 +62,7 @@
 			downloadButton.type = "button";
 			downloadButton.classList.add("linkbut");
 			downloadButton.textContent = "Download";
+			downloadButton.style.height = "36px";
 			downloadButton.addEventListener("click", () => {
 				const blob = new Blob([res], { type: "text/plain" });
 				const url = URL.createObjectURL(blob);
