@@ -82,7 +82,7 @@
 				<div class="infosection" style="    box-shadow: 0px 0px 21px -8px;height: fit-content;margin-top: 25px;border: 0;box-shadow: none;
 						align-items: flex-start;width: 94%">
 			{% for file in files %}
-				<li>{{ file.replace(prefix, "").replace(patient_id, "") }}
+				<li style="display:flex;align-items:center;">{{ file.replace(prefix, "").replace(patient_id, "") }}
 					<a class="linkbut2" style="display:block;width: 150px;height: 40px;
 							text-align: center;align-content: center;
 								text-decoration: none;" href="/trash/{{ file }}/{{ patient_id }}">delete</a>
