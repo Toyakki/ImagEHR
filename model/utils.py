@@ -91,7 +91,7 @@ def convert_to_dict(detection_result, width: int, height: int) -> Optional[Dict[
             "MITESTCD": mapping["MITESTCD"],
             "MIORRES": miorres,
             "MILOC": miloc,
-            "MIMETHOD": "x-ray",
+            "MIMETHOD": "CHEST X-RAY",
             "MIEVAL": "Radiologist"
         }
     elif "RSTESTCD" in mapping:
