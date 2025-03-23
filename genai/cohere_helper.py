@@ -1,7 +1,12 @@
 from cohere import ClientV2
 from econf.env import get_env
+import os
 
 _client = ClientV2(get_env("COHERE_API_KEY"))
+
+def refresh_cohere_client():
+	global _client
+	_client = ClientV2(os.environ["COHERE_API_KEY"])
 
 def simple_chat(message: str, model: str = "command-a-03-2025") -> str:
 	"""

@@ -2,7 +2,7 @@ from flask import Flask, render_template, stream_template, request, redirect
 from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from fhir import get_all_patient_ids, get_patient, get_all_patient_info
-from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
+from genai.cohere_helper import simple_chat, refresh_cohere_client # DO NOT REMOVE OR COMMENT OUT
 from genai.prompt import generate_cdisc_wrapper
 from model.inference import images_dir, labels_dir # DO NOT REMOVE OR COMMENT OUT
 from model.preprocess import preprocess_images
@@ -164,6 +164,7 @@ def trash(filename: str, patient_id: str):
 @app.route("/set_cohere/<api_key>")
 def set_cohere(api_key: str):
 	os.environ["COHERE_API_KEY"] = api_key
+	refresh_cohere_client()
 	return "OK"
 
 if __name__ == "__main__":
