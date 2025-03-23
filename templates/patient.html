@@ -28,14 +28,14 @@
 	<hr>
 	<div>
 		<h3>Chest X-Ray Upload</h3>
-		<p>Upload images (.png, .jpg) of chest scans for automatic analysis. Existing images:</p>
+		<p>Upload images (.png, .jpg, .webp) of chest scans for automatic analysis. Existing images:</p>
 		<ul>
 			{% for file in files %}
 				<li>{{ file.replace(prefix, "").replace(patient_id, "") }}</li>
 			{% endfor %}
 		</ul>
 		<form action="/upload/to/{{ patient_id }}" method="POST" enctype="multipart/form-data">
-			<input name="file" type="file" accept=".png, .jpg" value="Select image">
+			<input name="file" type="file" accept=".png, .jpg, .webp" value="Select image">
 			<input type="submit" value="Upload" >
 		</form>
 	</div>
