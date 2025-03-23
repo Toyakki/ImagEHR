@@ -29,6 +29,10 @@
 	<div>
 		<h3>Supplemental Documents</h3>
 		<p>Upload medical records, images, or other documents to auto analyze.</p>
+		<form action="/upload/to/{{ patient_id }}" method="POST" enctype="multipart/form-data">
+			<input name="file" type="file" value="Select file">
+			<input type="submit" value="Upload">
+		</form>
 	</div>
 
 	<!-- Take advantage of Flask's stream_template -->

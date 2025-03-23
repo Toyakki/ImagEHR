@@ -1,12 +1,16 @@
 from flask import Flask, render_template, stream_template, request, redirect
+from werkzeug.utils import secure_filename
 from flask_cors import CORS
 from fhir import get_all_patient_ids, get_patient, get_all_patient_info
 from genai.cohere_helper import simple_chat # DO NOT REMOVE OR COMMENT OUT
+from genai.prompt import generate_cdisc
 from model.inference import inference # DO NOT REMOVE OR COMMENT OUT
 from json import loads, dumps
 from base64 import b64encode
+from os.path import join, abspath, dirname
 
 app = Flask(__name__)
+app.config["UPLOAD_FOLDER"] = join(dirname(abspath(__file__)), "upload")
 CORS(app)
 fhir_api_base: str = ""
 
@@ -73,8 +77,19 @@ def patient(patient_id: str):
 			simple_chat=simple_chat
 		)
 	except Exception as e:
-		print(e.with_traceback())
+		print(e)
 		return render_template("error.html", message="Failed to fetch patient info!")
+
+@app.route("/upload/to/<patient_id>", methods=["POST"])
+def upload_to(patient_id: str):
+	if "file" not in request.files:
+		return render_template("error.html", message="No file specified!")
+	file = request.files["file"]
+	if file.filename == "":
+		return render_template("error.html", message="No file specified!")
+	filename = secure_filename(file.filename)
+	file.save(join(app.config["UPLOAD_FOLDER"], f"{patient_id}-{filename}"))
+	return redirect(f"/patient/{patient_id}")
 
 if __name__ == "__main__":
 	app.run(port=8000, host="0.0.0.0")  # NOT FOR PRODUCTION
