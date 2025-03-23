@@ -16,8 +16,17 @@
 </head>
 <body>
 	<h1>All Patients</h1>
-	<p>Fetched from {{ fhir }}</p>
+	<div style="display:flex;align-items:center;gap:12px;">
+		<p id="status">Fetched 0 patient records from {{ fhir }}</p>
+		<img height="14" src="/static/resources/loading.webp">
+	</div>
 	<hr>
+	<script>
+		var counter = 0;
+		const increment = () => {
+			document.getElementById("status").innerHTML = `Fetched ${++counter} patient records from {{ fhir }}`;
+		};
+	</script>
 	{% for id in ids %}
 	<div id="patient-{{ id }}" class="patient" onclick="window.location.href = '/patient/{{ id }}';"></div>
 	<script>
@@ -32,6 +41,7 @@
 				<p>${data.telecom ? "Phone: " + data.telecom[0].value : ""}</p>
 				<p>${data.birthDate ? "Birthdate: " + data.birthDate : ""}</p>
 			`;
+			increment();
 		} catch (e) {
 			console.warn(e);
 		}
