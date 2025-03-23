@@ -29,6 +29,7 @@ MANIFEST
 .idea/
 .vscode/
 model/pretrained/runs/*.pt
+model/pretrained/images/*
 upload/
 
 # PyInstaller
