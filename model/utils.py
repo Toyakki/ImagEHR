@@ -64,13 +64,18 @@ def convert_to_dict(detection_result, width: int, height: int) -> Optional[Dict[
     class_id, conf, x_center, y_center, w_norm, h_norm = detection_result
 
     if conf <= CUT_OFF:
-        return None  # Below confidence threshold
+        return None
 
-    # Convert YOLO to VOC format
     voc_bbox = yolo2voc(height, width, np.array([[x_center, y_center, w_norm, h_norm]]))[0]
+
     xmin, ymin, xmax, ymax = voc_bbox
-    measure = (xmax - xmin) * 2.54  # Assuming width is in pixels, converted to cm
-    miorres = f"{measure:.1f} px"
+
+    dpi = 300
+    pixel_spacing_cm = 2.54 / dpi
+
+    width_cm = (xmax - xmin) * pixel_spacing_cm
+    height_cm = (ymax - ymin) * pixel_spacing_cm
+    miorres = f"{width_cm:.2f} x {height_cm:.2f} cm^2"
     miloc = compute_miloc(xmin, ymin, xmax, ymax, width, height)
 
     # Get mapping and determine type

@@ -19,4 +19,4 @@ def inference() -> str:
 	run(cmd, shell=True, check=True)
 
 	records = process_detections(labels_dir, images_dir)
-	return dumps(records)
+	return dumps(records, indent=2)
