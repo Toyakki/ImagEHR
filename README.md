@@ -8,7 +8,7 @@ This is an AI application that automates the extraction and mapping of multi-mod
 
 **Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference features are unavailable due to free hosting limits)**
 
-**Check it out on DevPost: https://devpost.com/software/imagehr **
+**Check it out on DevPost: https://devpost.com/software/imagehr**
 # Award(s)
 <img height="200" src="badges/win.png">
 
