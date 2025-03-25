@@ -1,21 +1,21 @@
 # imagEHR
-This is an AI application that automates the extraction and mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use. By the power of AI we empower healthcare professionals by reducing repetitive, time-consuming tasks and letting them focus on what matters most "Patients". 
+This is an AI application that automates the extraction and mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use. By the power of AI we empower healthcare professionals by reducing repetitive, time-consuming tasks and letting them focus on what matters most "Patients". The problem is the manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development. Our solution lies in the Semi-automation of this process which can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.
+
+
+ <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"> <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"> 
 
 ![](gif/sample.gif)
 
-## The problem
-Manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development. Semi-automation can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.
+**Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference features are unavailable due to free hosting limits)**
 
 
 
-# Test our project live!
-Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference features are unavailable due to free hosting limits)
+
 
 ## Table of Contents:
 
 - [How to Use imagEHR](#how-to-use-imagEHR)
-- [What our app does](#test-our-project-live!)
-- [How our app works](#how-to-use-imagEHR)
+- [Application Inner Workings](#application-inner-workings)
 - [Tech stack](#how-to-use-imagEHR)
 - [Challenges we ran into](#challenges-we-ran-into)
 - [Our accomplishments](#)
@@ -25,23 +25,22 @@ Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference fea
 
 
 # How to Use imagEHR
-## Install PyTorch
+*Install PyTorch*
 https://pytorch.org/get-started/locally/
 
-## Setup
+**SETUP:**
 ```
 pip install -r requirements.txt
 ```
 
-## Pull submodules
+**PULL SUBMODULES:**
 ```
 git submodule update --init --remote --recursive
 ```
 
-## Environment
-Copy `.env.example` into `.env` and fill in your API keys, etc.
+**ENVIRONMENT: *Copy `.env.example` into `.env` and fill in your API keys, etc.***
 
-## Run the server
+**Run the Flask Server:**
 ```
 python main.py
 ```
@@ -53,12 +52,11 @@ python main.py
 
 
 
-# What our app does
+# Application Inner Workings
 Automates data extraction of EHR (text) and X-ray (image) data, and then infers how it can be mapped to industry standards for downstream research, trial, and regulatory use.
 
 Note: There are several types of clinical data that can be used to build a patient profile (eg. pharmacokinetic, laboratory, etc.) For simplicity, this application was developed using only EHR (text) and X-ray (image) data as raw inputs for a patient’s profile.
 
-# How our app works
 • Cohere to extract meaningful insights from EHR
 • Pre-trained model to extract meaningful data from X-ray images
 • Cohere to predict what SDTM domains the data can be mapped to
