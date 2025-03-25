@@ -1,12 +1,12 @@
-# ImagEHR
+# imagEHR
 This is an AI application that automates the extraction and mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use. By the power of AI we empower healthcare professionals by reducing repetitive, time-consuming tasks and letting them focus on what matters most "Patients". 
 
-## The problem
-The analysis of real-world clinical data is often unstructured, complex, and incompatible with regulatory and industry standards like the Clinical Data Interchange Standards Consortium (CDISC) (Ref. 1.) Clinicians and clinical programmers, respectively, spend significant time interpreting and manually mapping this data into standardized formats, which diverts attention from patient care and delays downstream processes. For example, doctors spend an average of 16 minutes per patient visit just reviewing and documenting EHRs, while specialists like radiologists add further layers of complexity with additional diagnostics like X-rays (Ref. 2, 3.)
-
-In the pharmaceutical and biotech industries, this manual data mapping process can take anywhere between 6-8 weeks, which hinders the pace of medical research and drug development (Ref. 4.) Each and every single day in patient care can make the difference between life and death. Semi-automating this pipeline offers a powerful opportunity to reduce delays, improve accuracy, and free up clinical teams (and clinicians) to focus on bringing life-changing medicines to patients and saving lives.
-
 ![](gif/sample.gif)
+
+## The problem
+Manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development. Semi-automation can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.
+
+
 
 # Test our project live!
 Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference features are unavailable due to free hosting limits)
