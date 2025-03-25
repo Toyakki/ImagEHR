@@ -1,21 +1,21 @@
-# ImagEHR
-This is an AI application that automates the extraction and mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use. By the power of AI we empower healthcare professionals by reducing repetitive, time-consuming tasks and letting them focus on what matters most "Patients". 
+# imagEHR
+This is an AI application that automates the extraction and mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use. By the power of AI we empower healthcare professionals by reducing repetitive, time-consuming tasks and letting them focus on what matters most "Patients". The problem is the manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development. Our solution lies in the Semi-automation of this process which can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.
 
-## The problem
-The analysis of real-world clinical data is often unstructured, complex, and incompatible with regulatory and industry standards like the Clinical Data Interchange Standards Consortium (CDISC) (Ref. 1.) Clinicians and clinical programmers, respectively, spend significant time interpreting and manually mapping this data into standardized formats, which diverts attention from patient care and delays downstream processes. For example, doctors spend an average of 16 minutes per patient visit just reviewing and documenting EHRs, while specialists like radiologists add further layers of complexity with additional diagnostics like X-rays (Ref. 2, 3.)
 
-In the pharmaceutical and biotech industries, this manual data mapping process can take anywhere between 6-8 weeks, which hinders the pace of medical research and drug development (Ref. 4.) Each and every single day in patient care can make the difference between life and death. Semi-automating this pipeline offers a powerful opportunity to reduce delays, improve accuracy, and free up clinical teams (and clinicians) to focus on bringing life-changing medicines to patients and saving lives.
+ <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"> <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"> 
 
 ![](gif/sample.gif)
 
-# Test our project live!
-Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference features are unavailable due to free hosting limits)
+**Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference features are unavailable due to free hosting limits)**
+
+
+
+
 
 ## Table of Contents:
 
 - [How to Use imagEHR](#how-to-use-imagEHR)
-- [What our app does](#test-our-project-live!)
-- [How our app works](#how-to-use-imagEHR)
+- [Application Inner Workings](#application-inner-workings)
 - [Tech stack](#how-to-use-imagEHR)
 - [Challenges we ran into](#challenges-we-ran-into)
 - [Our accomplishments](#)
@@ -25,23 +25,22 @@ Test it out live at https://imagehr-k7kg.onrender.com/ (note: some inference fea
 
 
 # How to Use imagEHR
-## Install PyTorch
+*Install PyTorch*
 https://pytorch.org/get-started/locally/
 
-## Setup
+**SETUP:**
 ```
 pip install -r requirements.txt
 ```
 
-## Pull submodules
+**PULL SUBMODULES:**
 ```
 git submodule update --init --remote --recursive
 ```
 
-## Environment
-Copy `.env.example` into `.env` and fill in your API keys, etc.
+**ENVIRONMENT: *Copy `.env.example` into `.env` and fill in your API keys, etc.***
 
-## Run the server
+**Run the Flask Server:**
 ```
 python main.py
 ```
@@ -53,12 +52,11 @@ python main.py
 
 
 
-# What our app does
+# Application Inner Workings
 Automates data extraction of EHR (text) and X-ray (image) data, and then infers how it can be mapped to industry standards for downstream research, trial, and regulatory use.
 
 Note: There are several types of clinical data that can be used to build a patient profile (eg. pharmacokinetic, laboratory, etc.) For simplicity, this application was developed using only EHR (text) and X-ray (image) data as raw inputs for a patient’s profile.
 
-# How our app works
 • Cohere to extract meaningful insights from EHR
 • Pre-trained model to extract meaningful data from X-ray images
 • Cohere to predict what SDTM domains the data can be mapped to
@@ -89,7 +87,10 @@ The SDTM domains and CDISC terminology (controlled vs. non-controlled terminolog
 
 
 ## References
-CDISC. Clinical Data Interchange Standards Consortium. https://www.cdisc.org/. Accessed 23 Mar. 2025.
-“Physicians Spend About 16 Minutes on EHRs Per Patient.” ASH Clinical News, n.d., https://ashpublications.org/ashclinicalnews/news/4924/Physicians-Spend-About-16-Minutes-on-EHRs-Per. Accessed 23 Mar. 2025.
-“Chest X-Ray.” Cleveland Clinic, https://my.clevelandclinic.org/health/diagnostics/10228-chest-x-ray. Accessed 23 Mar. 2025.
-“SDTM Automation.” PointCross Life Sciences, https://pointcrosslifesciences.com/sdtm-automation/. Accessed 23 Mar. 2025.
+- CDISC. Clinical Data Interchange Standards Consortium. https://www.cdisc.org/. Accessed 23 Mar. 2025.
+
+- “Physicians Spend About 16 Minutes on EHRs Per Patient.” ASH Clinical News, n.d., https://ashpublications.org/ashclinicalnews/news/4924/Physicians-Spend-About-16-Minutes-on-EHRs-Per. Accessed 23 Mar. 2025.
+
+- “Chest X-Ray.” Cleveland Clinic, https://my.clevelandclinic.org/health/diagnostics/10228-chest-x-ray. Accessed 23 Mar. 2025.
+
+- “SDTM Automation.” PointCross Life Sciences, https://pointcrosslifesciences.com/sdtm-automation/. Accessed 23 Mar. 2025.
