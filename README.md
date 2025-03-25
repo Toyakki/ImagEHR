@@ -1,6 +1,7 @@
 # imagEHR
 This is an AI application that automates the extraction and mapping of multi-modal clinical data to industry standards to streamline research, trial, and regulatory use. By the power of AI we empower healthcare professionals by reducing repetitive, time-consuming tasks and letting them focus on what matters most "Patients". The problem is the manual mapping of unstructured clinical data wastes valuable time and delays patient care and drug development. Our solution lies in the Semi-automation of this process which can reduce delays, boost accuracy, and free clinical teams to focus on saving lives.
 
+<img height="200" src="badges/win.png">
 
  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"> <img src="https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue"> 
 
@@ -9,8 +10,6 @@ This is an AI application that automates the extraction and mapping of multi-mod
 **Test it out live at https://imagehr-k7kg.onrender.com (note: some inference features are unavailable due to free hosting limits)**
 
 **Check it out on DevPost: https://devpost.com/software/imagehr**
-# Award(s)
-<img height="200" src="badges/win.png">
 
 
 ## Table of Contents:
@@ -65,10 +64,6 @@ Note: There are several types of clinical data that can be used to build a patie
 • Output .csv file of mapped data extractions in industry-ready format
 
 Note: Physicians and clinical programmers can also manually add or remove any domain or variable using their judgement.
-
-## Tech stack
-• Front-end: HTML, JavaScript, css
-• Back-end: Flask
 
 ## Challenges we ran into
 The SDTM domains and CDISC terminology (controlled vs. non-controlled terminology) was extremely complex and hard to navigate. We had to teach ourselves how this mapping process worked. Access to real-world clinical data was limited. For example, the EHR sandbox data we used was low quality and there were not many good alternatives.
