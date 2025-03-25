@@ -87,7 +87,10 @@ The SDTM domains and CDISC terminology (controlled vs. non-controlled terminolog
 
 
 ## References
-CDISC. Clinical Data Interchange Standards Consortium. https://www.cdisc.org/. Accessed 23 Mar. 2025.
-“Physicians Spend About 16 Minutes on EHRs Per Patient.” ASH Clinical News, n.d., https://ashpublications.org/ashclinicalnews/news/4924/Physicians-Spend-About-16-Minutes-on-EHRs-Per. Accessed 23 Mar. 2025.
-“Chest X-Ray.” Cleveland Clinic, https://my.clevelandclinic.org/health/diagnostics/10228-chest-x-ray. Accessed 23 Mar. 2025.
-“SDTM Automation.” PointCross Life Sciences, https://pointcrosslifesciences.com/sdtm-automation/. Accessed 23 Mar. 2025.
+- CDISC. Clinical Data Interchange Standards Consortium. https://www.cdisc.org/. Accessed 23 Mar. 2025.
+
+- “Physicians Spend About 16 Minutes on EHRs Per Patient.” ASH Clinical News, n.d., https://ashpublications.org/ashclinicalnews/news/4924/Physicians-Spend-About-16-Minutes-on-EHRs-Per. Accessed 23 Mar. 2025.
+
+- “Chest X-Ray.” Cleveland Clinic, https://my.clevelandclinic.org/health/diagnostics/10228-chest-x-ray. Accessed 23 Mar. 2025.
+
+- “SDTM Automation.” PointCross Life Sciences, https://pointcrosslifesciences.com/sdtm-automation/. Accessed 23 Mar. 2025.
